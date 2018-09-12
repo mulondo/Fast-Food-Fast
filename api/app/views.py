@@ -52,9 +52,9 @@ def update_status(order_id):
     status=request.json['status']
     # status validation check
     if status.strip()=="":
-        return jsonify({'error':'customer name is empty'}),403    
+        return jsonify({'error':'status is empty'}),403    
     elif not status.isalpha():
-        return jsonify({'error':'wrong username format'}),403
+        return jsonify({'error':'wrong stutus format'}),403
     
     return jsonify({'status updated':ordrs.update_status(order_id,status)}),201
 
