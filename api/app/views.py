@@ -49,8 +49,14 @@ def get_specific_order(order_id):
 
 @myapp.route('/api/v1/orders/<int:order_id>',methods=['PUT'])
 def update_status(order_id):
-    sta=request.json['status']
-    return jsonify({'status updated':ordrs.update_status(order_id,sta)}),201
+    status=request.json['status']
+    # status validation check
+    if status.strip()=="":
+        return jsonify({'error':'customer name is empty'}),403    
+    elif not status.isalpha():
+        return jsonify({'error':'wrong username format'}),403
+    
+    return jsonify({'status updated':ordrs.update_status(order_id,status)}),201
 
 
    
