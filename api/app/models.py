@@ -23,5 +23,12 @@ class Customer_Orders:
             if order['order_id']==order_id:
                 return order
         return "The order id doesnot exist"
+    
+    def update_status(self,order_id,status):
+        for order in self.orders:
+            if order['order_id']==order_id:
+                order['status']=status
+                return self.orders
+        
 
     
