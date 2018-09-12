@@ -11,7 +11,7 @@ def add_order():
     my_items.append(request.json['order_items'])
 
     # order items validation check
-    if len(my_items)==0:
+    if my_items is None:
         return jsonify({'error':'No item is ordered'}),403
 
     # # user name validation check
@@ -42,5 +42,15 @@ def get_order():
 
 @myapp.route('/api/v1/orders/<int:order_id>',methods=['GET'])
 def get_specific_order(order_id):
+    if type(order_id) is not int:
+        return jsonify({'error':'the id must be an integer'}),403
+
     return jsonify({'Order':ordrs.get_an_order(order_id)}),200
+
+@myapp.route('/api/v1/orders/<int:order_id>',methods=['PUT'])
+def update_status(order_id):
+    sta=request.json['status']
+    return jsonify({'status updated':ordrs.update_status(order_id,sta)}),201
+
+
    
