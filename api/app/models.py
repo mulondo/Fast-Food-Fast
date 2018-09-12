@@ -2,7 +2,7 @@ class Customer_Orders:
     def __init__(self):
         self.orders=[]
 
-     def make_order(self,username,phone_number,myitems=list()):
+    def make_order(self,username,phone_number,myitems=list()):
         my_order=[]
         my_order=myitems
         order_id=len(self.orders)+1
@@ -14,3 +14,7 @@ class Customer_Orders:
             "status":"None"
         }
         return self.orders.append(order)
+
+    def get_all_orders(self):
+        return self.orders
+    
