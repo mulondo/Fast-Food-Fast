@@ -28,7 +28,7 @@ class Customer_Orders:
         for order in self.orders:
             if order['order_id']==order_id:
                 order['status']=status
-                return self.orders
+                return self.order
         
 
     
