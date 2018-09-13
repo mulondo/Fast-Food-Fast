@@ -42,4 +42,12 @@ def place_order():
 @myapp.route('/api/v1/orders', methods=['GET'])
 def get_order():
     """Gets all orders"""
-    return jsonify({'orders made':ORDRS.get_all_orders()}), 200    
+    return jsonify({'orders made':ORDRS.get_all_orders()}), 200
+
+@myapp.route('/api/v1/orders/<int:order_id>', methods=['GET'])
+def get_specific_order(order_id):
+    """ gets a specific order given an id"""
+    if type(order_id) is not int:
+        return jsonify({'error':'the id must be an integer'}), 403
+
+    return jsonify({'Order':ORDRS.get_an_order(order_id)}), 201    
