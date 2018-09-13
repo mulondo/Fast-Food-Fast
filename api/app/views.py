@@ -38,3 +38,8 @@ def place_order():
 
     ORDRS.make_order(username, phone_number, my_items)
     return jsonify({'message': 'succussfully created'}), 201
+
+@myapp.route('/api/v1/orders', methods=['GET'])
+def get_order():
+    """Gets all orders"""
+    return jsonify({'orders made':ORDRS.get_all_orders()}), 200    
