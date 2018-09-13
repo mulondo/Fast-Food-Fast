@@ -50,4 +50,10 @@ def get_specific_order(order_id):
     if type(order_id) is not int:
         return jsonify({'error':'the id must be an integer'}), 403
 
-    return jsonify({'Order':ORDRS.get_an_order(order_id)}), 201    
+    return jsonify({'Order':ORDRS.get_an_order(order_id)}), 201
+
+@myapp.route('/api/v1/orders/<int:order_id>', methods=['PUT'])
+def update_status(order_id):
+    """ Updates the status"""
+    status = request.json['status']
+    return jsonify({'status updated':ORDRS.update_status(order_id, status)}), 201    
