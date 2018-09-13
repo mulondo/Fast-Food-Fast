@@ -65,3 +65,4 @@ def update_status(order_id):
         return jsonify({'error':'wrong stutus format'}), 403
 
     return jsonify({'status updated':ORDRS.update_status(order_id, status)}), 201
+    
