@@ -22,9 +22,17 @@ class CustomerOrders:
     def get_all_orders(self):
         """ gets a list of orders"""
         return self.orders
-def get_an_order(self, order_id):
+    def get_an_order(self, order_id):
         """ gets a specific order"""
         for order in self.orders:
             if order['order_id'] == order_id:
                 return order
+        return "The order id doesnot exist"
+
+    def update_status(self, order_id, status):
+        """ updates the order status"""
+        for order in self.orders:
+            if order['order_id'] == order_id:
+                order['status'] = status
+                return self.orders
         return "The order id doesnot exist"
