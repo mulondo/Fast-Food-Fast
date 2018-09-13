@@ -18,3 +18,7 @@ class CustomerOrders:
             "status":"None"
         }
         return self.orders.append(order)
+        
+    def get_all_orders(self):
+        """ gets a list of orders"""
+        return self.orders
