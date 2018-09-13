@@ -14,7 +14,7 @@ class Test_api(TestCase):
     def test_add_order(self):
         """ test for posting an order """
         result = self.client().post('/api/v1/orders', content_type='application/json',
-                                    data=json.dumps(dict(username="moses", 
+                                    data=json.dumps(dict(username="moses",
                                                          phone_number="0704893645", order_items="['matooke']")))
         self.assertEqual(result.status_code, 201)
 
@@ -41,7 +41,7 @@ class Test_api(TestCase):
         result = self.client().post('/api/v1/orders', content_type='application/json',
                                     data=json.dumps(dict(username="moses", phone_number="", order_items="['matooke']")))
         self.assertEqual(result.status_code, 403)
-        
+
     def test_get_all_orders(self):
         """ test for get all orders """
         result = self.client().get('/api/v1/orders')
@@ -50,7 +50,7 @@ class Test_api(TestCase):
     def test_get_specific_order(self):
         """ test for getting a specific order"""
         self.client().post('/api/v1/orders', content_type='application/json',
-                        data=json.dumps(dict(username="moses", phone_number="0701859624", order_items="['matooke']")))
+                           data=json.dumps(dict(username="moses", phone_number="0701859624", order_items="['matooke']")))
         result = self.client().get('/api/v1/orders/1')
         self.assertEqual(result.status_code, 201)
     def test_update_status(self):
