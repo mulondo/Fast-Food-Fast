@@ -9,6 +9,15 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+
+select{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
 /* syle for the h1*/
 h1{
     color: #61210B;
@@ -55,7 +64,7 @@ img.food{
 span{
     float: right;
     padding: 30px 20px;
-    margin-top: -20px;    
+    margin-top: -33px;    
 }
 
 /* style for links under span */
@@ -89,7 +98,7 @@ span a:hover{
     margin: 1% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 35%; /* Could be more or less, depending on screen size */
-    height: 500px
+    height: 510px
 }
 
 /* The Close Button (x) */
