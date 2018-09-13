@@ -10,7 +10,7 @@
 
     <body>
         <div class="modal">
-            <form class="modal-content animate" action="/action_page.php">
+            <form class="modal-content animate">
                 <h1>Fast-Food-Fast</h1>
                 <div id="imgcontainer">    
                     <img src="images/food.jpg" alt="User" style="width:100%" class="food">
@@ -22,15 +22,12 @@
                 
                         <label for="password"><b>Password</b></label>
                         <input type="password" placeholder="***************" name="passsword" required>
-                        
-                        <input type="submit"  class="loginbtn" value="Login" onclick="window.location='User_account.html'">
-								
-								<select>
-  									<option value="volvo">Volvo</option>
-  									<option value="saab">Saab</option>
-  									<option value="opel">Opel</option>
-  									<option value="audi">Audi</option>
-								</select>                        
+                        <label for="username"><b>Select role</b></label>
+                        <select id="selected">
+                            <option value="customer">Customer</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                        <input type="button" id="login_id" onclick="on_click_login()" class="loginbtn" value="Login">                       
                         
                         <span>
                             <a href="forgot_pwd.html">Forgot password</a>
@@ -39,5 +36,20 @@
                 </div>
           </form>
           </div>
+          <script>
+           function on_click_login() {
+                    var selected_role = document.getElementById('selected');
+                    var values =selected_role.value
+                    if(values=="admin"){
+                        window.location.href = "forgot_pwd.html";
+                    }
+                    else{
+                        window.location.href = "signup.html";                        
+                    }
+                    document.getElementById('display').innerHTML = value;
+                }
+               
+
+          </script>
     </body>
 </html>
