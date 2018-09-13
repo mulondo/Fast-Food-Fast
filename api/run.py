@@ -1,3 +1,4 @@
+""" runs the whole application """
 from instance import myapp
 from app import views
 
