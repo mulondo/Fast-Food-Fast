@@ -56,4 +56,12 @@ def get_specific_order(order_id):
 def update_status(order_id):
     """ Updates the status"""
     status = request.json['status']
-    return jsonify({'status updated':ORDRS.update_status(order_id, status)}), 201    
+    # status validation check
+    if not order_id:
+        return jsonify({'status updated':'id doesnot exist'}), 404
+    if status.strip() == "":
+        return jsonify({'error':'status is empty'}), 403
+    if not status.isalpha():
+        return jsonify({'error':'wrong stutus format'}), 403
+
+    return jsonify({'status updated':ORDRS.update_status(order_id, status)}), 201
