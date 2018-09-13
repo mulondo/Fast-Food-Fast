@@ -22,3 +22,9 @@ class CustomerOrders:
     def get_all_orders(self):
         """ gets a list of orders"""
         return self.orders
+def get_an_order(self, order_id):
+        """ gets a specific order"""
+        for order in self.orders:
+            if order['order_id'] == order_id:
+                return order
+        return "The order id doesnot exist"
