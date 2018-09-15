@@ -8,29 +8,103 @@
     </head>
     <body>
         <div class="contain">
-            <header>
-            
-                <h1>Fast_Food_Fast</h1> 
-                
-                <h4>User</h4>
-                <nav>                           
-                    
-                    <input type="button" class="logout" onclick="window.location='index.html'" value="Logout">                       
-                </nav>  
-                <form>
-                    <input type="text" placeholder="Search" name="search">
-                    <button type="submit" name="serach_button">Search</button>
-            </form>
-            </header>
+            <div class="navbar">
+                <h3 id="title">Events App</h3> 
+                <a href="index.html"><h3 id="logout">Logout</h3></a>   
+            </div>
 
             <aside>
-
+                    <img src="images/food.jpg" alt="food" style="width:100%" class="food">
+                   
+                        <h2 class="operations">Add food items</h2>
+                        <h2 class="operations">Edit food items</h2>
+                        <h2 class="operations">Delete food items</h2>
+                   
             </aside>
 
             <section>
+                <div class="column">
+                    <div class="row">
+                        <div class="card">
+                            <h3 name="">Order 1</h3>
 
+                            <h5 class="customer_info">From: Moses</h5> 
+                            <h5 class="customer_info">Phone number: 0703893645</h5>
+                            <h5 class="customer_info">Date: 09/08/2018  Time: 09:00am</h5>
+                                                                                                                               
+                                    <div class="items_dropdown">
+                                        <h4 onclick="onclick_order_items()" id="order_items">order items</h4> 
+                                        <h4 id="itemsnumber">5</h4> 
+                                                                               
+                                          <div id="order_items_dropdown" class="items_dropdown-content">                              
+                                                    <div class="order_item_row">
+                                                            <div class="items_card">
+                                                                <h4 id="order_type">Lunch</h4>
+                                                                <ul id="items">
+                                                                    <li>rice</li>
+                                                                    <li>matooke</li>
+                                                                    <li>cassave</li>
+                                                                    <li>bean</li>
+                                                                    <li>sweat potato</li>
+                                                                </ul>                                                               
+                                                                                                                                                                                       
+                                                            </div>
+                                                    </div>                                                         
+                                          </div>
+                                    </div>                                                                                     
+                        </div>
+                    </div>                     
+                    
+        
+                            <div class="row">
+                        <div class="card">
+                            <h3 id="order">Order 2</h3>
+                                                        
+                            <h5 class="customer_info">From: John</h5> 
+                            <h5 class="customer_info">Phone number: 070389525</h5>
+                            <h5 class="customer_info">Date: 09/08/2018  Time: 09:00am</h5>
+                                                                                                                               
+                                    <div class="items_dropdown">
+                                        <h4 onclick="onclick_order_items2()" id="order_items">order items</h4> 
+                                        <h4 id="itemsnumber">2</h4> 
+                                                                               
+                                          <div id="order_items_dropdowns" class="items_dropdown-content">                              
+                                                    <div class="order_item_row">
+                                                            <div class="items_card">  
+                                                                <h3 id="order_type">Breakfast</h3>                                                             
+                                                                <ul id="items">                                                                        
+                                                                    <li>milk</li>
+                                                                    <li>chapati</li>                                                                    
+                                                                </ul>                                                               
+                                                                                                                                                                                       
+                                                            </div>
+                                                    </div>                                                         
+                                          </div>
+                                    </div>                                                                                     
+                        </div>
+                    </div>                                
+                </div>
             </section>
-
         </div>
+        <script>
+              function onclick_order_items() {
+            document.getElementById("order_items_dropdown").classList.toggle("show");
+                    } 
+                function onclick_order_items2() {
+            document.getElementById("order_items_dropdowns").classList.toggle("show");
+                    }
+        window.onscroll = function() {myFunction()};
+
+        var header = document.getElementById("myHeader");
+        var sticky = header.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset > sticky) {
+                header.classList.add("sticky");
+            } else {
+                header.classList.remove("sticky");
+            }
+        }
+        </script>
     </body>
 </html>
