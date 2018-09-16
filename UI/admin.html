@@ -15,10 +15,77 @@
 
             <aside>
                     <img src="images/food.jpg" alt="food" style="width:100%" class="food">
+                        <h2 class="operations" onclick="document.getElementById('add').style.display='block'" style="width:auto;">Food items</h2>
+                       
+
+                        <div id="add" class="modal"> 
+                                <table class="modal-content animate">
+                                        <tr>
+                                          <th>Breakfast</th>
+                                          <th>Lunch</th>
+                                          <th>Dinner</th>
+                                        </tr>
+                                        <tr>
+                                          <td>milk</td>
+                                          <td>matooke</td>
+                                          <td>cassava</td>
+                                          <td><button>Edit</button></td>
+                                          <td><button>Delete</button></td>
+                                          
+                                        </tr>
+                                        <tr>
+                                          <td>black tea</td>
+                                          <td>beef</td>
+                                          <td>hotdog</td>
+                                          <td><button>Edit</button></td>
+                                          <td><button>Delete</button></td>
+                                        </tr>
+                                        <tr>
+                                          <td>chapati</td>
+                                          <td>chicken</td>
+                                          <td>eggs</td>
+                                          <td><button>Edit</button></td>
+                                          <td><button>Delete</button></td>
+                                        </tr>
+                                        <tr>
+                                          <td>porride</td>
+                                          <td>rice</td>
+                                          <td>yogurt</td>
+                                          <td><button>Edit</button></td>
+                                          <td><button>Delete</button></td>
+                                        </tr>
+                                        <tr>
+                                          <td>pancakes</td>
+                                          <td>fish</td>
+                                          <td>sausage</td>
+                                          <td><button>Edit</button></td>
+                                          <td><button>Delete</button></td>
+                                        </tr>
+                                        <tr>
+                                          <td>sausage</td>
+                                          <td>chips</td>
+                                          <td>eggs</td>
+                                          <td><button>Edit</button></td>
+                                          <td><button>Delete</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><button>Add</button></td>
+                                            <td><button type="button" onclick="document.getElementById('add').style.display='none'" class="cancelbtn">Close</button></td>                                                
+                                        </tr>                                        
+                                      </table>                                    
+                                                                    
+                            
+                        </div>            
+                        
+
                         
                         <h2 class="operations">Add food items</h2>
                         <h2 class="operations">Edit food items</h2>
                         <h2 class="operations">Delete food items</h2>                   
+
             </aside>
 
             <section>
@@ -46,7 +113,12 @@
                                                                     <li>bean</li>
                                                                     <li>sweat potato</li>
                                                                 </ul>                                                               
-                                                                                                                                                                                       
+                                                                <input type="checkbox" value="complete">                                                            
+                                                                <form>                                                        
+                                                                        <h4 id="complete">complete</h4>                                                                    
+                                                                    <input type="submit" value="Decline order">                                                                    
+                                                                    <input type="submit" value="Accept order">
+                                                                </form>                                                                                                               
                                                             </div>
                                                     </div>                                                         
                                           </div>
@@ -74,12 +146,19 @@
                                                                 <ul id="items">                                                                        
                                                                     <li>milk</li>
                                                                     <li>chapati</li>                                                                    
-                                                                </ul>                                                               
-                                                                                                                                                                                       
+                                                                </ul>   
+                                                                <input type="checkbox" value="complete">                                                            
+                                                                <form>   
+                                                                        
+                                                                        <h4 id="complete">complete</h4>                                                                                                             
+                                                                        <input type="submit" value="Decline order">                                                                        
+                                                                        <input type="submit" value="Accept order">
+                                                                       
+                                                                    </form>                                                                                                                   
                                                             </div>
                                                     </div>                                                         
-                                          </div>
-                                    </div>                                                                                     
+                                        </div>
+                                </div>                                                                                     
                         </div>
                     </div>                                
                 </div>
@@ -96,14 +175,13 @@
 
         var header = document.getElementById("myHeader");
         var sticky = header.offsetTop;
-
-        function myFunction() {
-            if (window.pageYOffset > sticky) {
-                header.classList.add("sticky");
-            } else {
-                header.classList.remove("sticky");
+        var add_modal = document.getElementById('add');    
+        window.onclick = function(event) {
+            if (event.target == add_modal) {
+                modal.style.display = "none";
             }
         }
+       
         </script>
     </body>
 </html>
