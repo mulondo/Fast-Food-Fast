@@ -1,0 +1,120 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Fast-Food-Fast</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./css/customer.css" />
+    </head>
+    <body>
+    <div class="container">      
+        <div class="navbar">
+            <h3 id="title">Events App</h3>             
+            <a href="../index.html"><h3 id="logout">Logout</h3></a>
+            <a href="../index.html"><h3 id="logout">History</h3></a>    
+        </div>                            
+            <section>
+                <h1 id="make">Make your order here</h1>
+                <button id="breakfast_btns" class="breakfast_btn">Breakfast</button>
+                <button id="lunch_btn_id" class="lunch_btn">Lunch</button>
+                <button id="dinner_btn_id" class="dinner_btn">Dinner</button>
+
+                <div id="breakfastmodal" class="modal">
+                   
+                    <div class="modal-content">                      
+                        <form>
+                            <h2>Breakfast menu</h2>
+                                <input type="checkbox"> milk tea<br>
+                                <input type="checkbox"> black tes<br>
+                                <input type="checkbox">chapati<br>
+                                <input type="checkbox"> porride<br>
+                                <input type="checkbox"> pancakes<br>
+                                <input type="checkbox"> sausage<br>
+                                <input type="checkbox"> bread<br>
+                                <input type="checkbox"> hotdog<br>
+                                <input type="checkbox"> eggs<br>                               
+                                <input id="btn_extend" type="submit" value="Order">
+                                <input id="btn_extend" type="submit" value="Cancel">                                
+                        </form>
+                        
+                    </div>                
+                </div>
+
+                <div id="lunchmodal" class="modal">
+                   
+                        <div class="modal-content">                           
+                            <form>
+                                <h2>Lunch menu</h2>
+                                    <input type="checkbox"> matooke<br>
+                                    <input type="checkbox"> beef<br>
+                                    <input type="checkbox"> chicken<br>
+                                    <input type="checkbox"> cassava<br>
+                                    <input type="checkbox"> cabbagge<br>
+                                    <input type="checkbox"> beans<br>
+                                    <input type="checkbox"> peas<br>
+                                    <input type="checkbox"> sweet potato<br>
+                                    <input type="checkbox"> iris potato<br>
+                                    <input type="checkbox"> rice<br>                            
+                                    <input id="btn_extend" type="submit" value="Order">
+                                    <input id="btn_extend" type="submit" value="Cancel">                                
+                            </form>
+                            
+                        </div>                
+                    </div>
+
+                    <div id="dinnermodal" class="modal">
+                   
+                        <div class="modal-content">                          
+                            <form>
+                                <h2>Dinner menu</h2>
+                                    <input type="checkbox"> hotdog<br>
+                                    <input type="checkbox"> chips<br>
+                                    <input type="checkbox"> chicken<br>
+                                    <input type="checkbox"> yogurt<br>
+                                    <input type="checkbox"> eggs<br>
+                                    <input type="checkbox"> cake<br>
+                                    <input type="checkbox"> rolex<br>
+                                    <input type="checkbox"> sausage<br>                                    
+                                    <input type="checkbox"> rice<br>                            
+                                    <input id="btn_extend" type="submit" value="Order">
+                                    <input id="btn_extend" type="submit" value="Cancel">                                
+                            </form>
+                            
+                        </div>                
+                    </div>
+
+            </section> 
+            
+            
+            
+    </div>
+    <script>
+    // pick modals
+    var breakfastmodal = document.getElementById('breakfastmodal');
+    var lunchmodal= document.getElementById('lunchmodal');
+    var dinnermodal= document.getElementById('dinnermodal');
+    
+
+    // pick buttons
+    var breakfast_btn = document.getElementById("breakfast_btns");
+    var lunch_btn=document.getElementById("lunch_btn_id");
+    var dinner_btn=document.getElementById("dinner_btn_id");
+   
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // open modals when buttons are clicked  
+    breakfast_btn.onclick = function() {
+        breakfastmodal.style.display = "block";
+    }
+    lunch_btn.onclick =function() {
+        lunchmodal.style.display = "block";
+    }
+    dinner_btn.onclick =function() {
+        dinnermodal.style.display = "block";
+    }
+
+    
+</script>
+    </body>
+</html>
