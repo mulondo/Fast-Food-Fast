@@ -48,7 +48,7 @@ def get_order():
 def get_specific_order(order_id):
     """ gets a specific order given an id"""
     if type(order_id) is not int:
-        return jsonify({'error':'the id must be an integer'}), 403
+        return jsonify({'error':'Incorrect id format, must be an integer'}), 403
 
     return jsonify({'Order':ORDRS.get_an_order(order_id)}), 201
 
