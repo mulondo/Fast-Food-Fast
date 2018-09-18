@@ -13,7 +13,7 @@ class Test_api(TestCase):
 
     def test_add_order(self):
         """ test for posting an order """
-        result = self.client().post('/api/v1/orders', content_type='application/json',
+        result = self.client().post(content_type='application/json', '/api/v1/orders',
                                     data=json.dumps(dict(username="moses",
                                                          phone_number="0704893645", order_items="['matooke']")))
         self.assertEqual(result.status_code, 201)
