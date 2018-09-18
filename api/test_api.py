@@ -70,23 +70,30 @@ class Test_api(TestCase):
                                     data=json.dumps(dict(status="accepted")))
         self.assertEqual(result.status_code, 201)
 
-    def test_validation_update_status_with_non_existing_id(self):
-        """ test for update status """
-        self.client().post('/api/v1/orders', content_type='application/json',
-                           data=json.dumps(dict(username="Brian", phone_number="0705789625", order_items="['matooke']")))
-
-        result = self.client().put('/api/v1/orders/10', content_type='application/json',
+        result1 = self.client().put('/api/v1/orders/10', content_type='application/json',
                                    data=json.dumps(dict(status="accepted")))
-        self.assertEqual(result.status_code, 404)
+        self.assertEqual(result1.status_code, 404)
 
-    def test_update_status_with_empty_status(self):
-        """ test for empty status """
-        self.client().post('/api/v1/orders', content_type='application/json',
-                           data=json.dumps(dict(username="james", phone_number="", order_items="['chapati']")))
-
-        result = self.client().put('/api/v1/orders/1', content_type='application/json',
+        result2 = self.client().put('/api/v1/orders/1', content_type='application/json',
                                    data=json.dumps(dict(status="")))
-        self.assertEqual(result.status_code, 403)
+        self.assertEqual(result2.status_code, 403)
+
+
+    # def test_validation_update_status_with_non_existing_id(self):
+    #     """ test for update status """
+    #     self.client().post('/api/v1/orders', content_type='application/json',
+    #                        data=json.dumps(dict(username="Brian", phone_number="0705789625", order_items="['matooke']")))
+
+        
+
+    # def test_update_status_with_empty_status(self):
+    #     """ test for empty status """
+    #     self.client().post('/api/v1/orders', content_type='application/json',
+    #                        data=json.dumps(dict(username="james", phone_number="", order_items="['chapati']")))
+
+    #     result = self.client().put('/api/v1/orders/1', content_type='application/json',
+    #                                data=json.dumps(dict(status="")))
+    #     self.assertEqual(result.status_code, 403)
 
     def test_update_status_with_wrong_format(self):
         """ test for wrong status format"""
