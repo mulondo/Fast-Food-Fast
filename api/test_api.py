@@ -49,8 +49,8 @@ class Test_api(TestCase):
 
     def test_get_specific_order_with_existing_id(self):
         """ test for getting a specific order"""
-        self.client().post('/api/v1/orders', content_type='application/json',
-                           data=json.dumps(dict(username="tim", phone_number="0701859624", order_items="['matooke']")))
+        # self.client().post('/api/v1/orders', content_type='application/json',
+        #                    data=json.dumps(dict(username="tim", phone_number="0701859624", order_items="['matooke']")))
         result = self.client().get('/api/v1/orders/1')
         self.assertEqual(result.status_code, 200)
         result1 = self.client().get('/api/v1/orders/8')
