@@ -65,8 +65,8 @@ class Test_api(TestCase):
 
     def test_update_status_with_existing_id(self):
         """ test for update status """
-        self.client().post('/api/v1/orders', content_type='application/json',
-                            data=json.dumps(dict(username="Noah", phone_number="0705700834", order_items="['matooke']")))
+        # self.client().post('/api/v1/orders', content_type='application/json',
+        #                     data=json.dumps(dict(username="Noah", phone_number="0705700834", order_items="['matooke']")))
 
         result = self.client().put('/api/v1/orders/1', content_type='application/json',
                                     data=json.dumps(dict(status="accepted")))
