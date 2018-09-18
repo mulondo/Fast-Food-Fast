@@ -16,9 +16,7 @@ class Test_api(TestCase):
         add_result = self.client().post('/api/v1/orders', content_type='application/json',
                                     data=json.dumps(dict(username="moses",
                                                          phone_number="0704893645", order_items="['matooke']")))
-        self.assertEqual(add_result.status_code, 201)
-
-    
+        self.assertEqual(add_result.status_code, 201)    
 
     def test_get_all_orders(self):
         """ test for get all orders """
@@ -32,8 +30,6 @@ class Test_api(TestCase):
         self.assertEqual(result.status_code, 200)
         result1 = self.client().get('/api/v1/orders/8')
         self.assertEqual(result1.status_code, 404)
-
-
 
     def test_update_status_with_existing_id(self):
         """ test for update status """
