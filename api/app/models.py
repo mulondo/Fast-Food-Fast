@@ -27,6 +27,7 @@ class CustomerOrders:
             "order_items":my_order,
             "status":"None"
         }
+        self.orders.append(order)
         return jsonify({'message':'successfully added'}),201 
 
     def get_all_orders(self):
@@ -37,7 +38,7 @@ class CustomerOrders:
         """ gets a specific order"""
         for order in self.orders:
             if order['order_id'] == order_id:
-                return jsonify({'message':'order'}),200
+                return jsonify({'order':order}),200
         return jsonify({'error':'order doesnot exit'}),404
 
     def update_status(self, order_id, status):
