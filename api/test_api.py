@@ -70,7 +70,7 @@ class Test_api(TestCase):
                                    data=json.dumps(dict(status="accepted")))
         self.assertEqual(result.status_code, 201)
 
-    def test_update_status_with_non_existing_id(self):
+    def test_validation_update_status_with_non_existing_id(self):
         """ test for update status """
         self.client().post('/api/v1/orders', content_type='application/json',
                            data=json.dumps(dict(username="Brian", phone_number="0705789625", order_items="['matooke']")))
