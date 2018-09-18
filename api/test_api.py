@@ -13,10 +13,10 @@ class Test_api(TestCase):
 
     def test_add_order(self):
         """ test for posting an order """
-        result = self.client().post('/api/v1/orders', content_type='application/json',
+        add_result = self.client().post('/api/v1/orders', content_type='application/json',
                                     data=json.dumps(dict(username="moses",
                                                          phone_number="0704893645", order_items="['matooke']")))
-        self.assertEqual(result.status_code, 201)
+        self.assertEqual(add_result.status_code, 201)
 
     def test_short_phone_number(self):
         """ test for short phone number """
