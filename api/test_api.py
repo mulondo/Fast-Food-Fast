@@ -13,7 +13,7 @@ class Test_api(TestCase):
 
     def test_add_order(self):
         """ test for posting an order """
-        result = self.client().post(content_type='application/json', '/api/v1/orders',
+        result = self.client().post('/api/v1/orders', content_type='application/json',
                                     data=json.dumps(dict(username="moses",
                                                          phone_number="0704893645", order_items="['matooke']")))
         self.assertEqual(result.status_code, 201)
@@ -64,10 +64,10 @@ class Test_api(TestCase):
     def test_update_status_with_existing_id(self):
         """ test for update status """
         self.client().post('/api/v1/orders', content_type='application/json',
-                           data=json.dumps(dict(username="Noah", phone_number="0705700834", order_items="['matooke']")))
+                            data=json.dumps(dict(username="Noah", phone_number="0705700834", order_items="['matooke']")))
 
         result = self.client().put('/api/v1/orders/1', content_type='application/json',
-                                   data=json.dumps(dict(status="accepted")))
+                                    data=json.dumps(dict(status="accepted")))
         self.assertEqual(result.status_code, 201)
 
     def test_validation_update_status_with_non_existing_id(self):
