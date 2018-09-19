@@ -13,28 +13,13 @@ class CustomerOrders:
         my_order = []
         my_order = myitems
         order_id = len(self.orders)+1
-        # order items validation check
-        if my_order is None:
-            return jsonify({'error':'No item is ordered'}), 403
 
-        # user name validation check
-        if username.strip() == "":
-            return jsonify({'error':'customer name is empty'}), 403
-        if not username.isalpha():
-            return jsonify({'error':'wrong username format'}), 403
-        if len(username) < 4:
-            return jsonify({'error':'username is too short'}), 403
+        if not username.isalpha() or len(username) < 4 or username.strip() == "":
+            return jsonify({'error':'wrong username format'}), 403 
 
+        if not phone_number.isdigit() or phone_number.strip() == "" or len(phone_number) < 10 or len(phone_number) > 12:
+            return jsonify({'error': 'wrong phone number format'}), 403
 
-        # phone number
-        if phone_number.strip() == "":
-            return jsonify({'error': 'phone number is empty'}), 403
-        if not phone_number.isdigit():
-            return jsonify({'error': 'wrong phone number type'}), 403
-        if len(phone_number) < 10:
-            return jsonify({'error': 'phone number is too short'}), 403
-        if len(phone_number) > 12:
-            return jsonify({'error': 'phone number is too long'}), 403
         order = {
             "username":username,
             "order_id":order_id,
@@ -42,7 +27,8 @@ class CustomerOrders:
             "order_items":my_order,
             "status":"None"
         }
-        return jsonify({'message':self.orders.append(order)}),201 
+        self.orders.append(order)
+        return jsonify({'message':'successfully added'}),201 
 
     def get_all_orders(self):
         """ gets a list of orders"""
@@ -52,7 +38,7 @@ class CustomerOrders:
         """ gets a specific order"""
         for order in self.orders:
             if order['order_id'] == order_id:
-                return jsonify({'message':'order'}),200
+                return jsonify({'order':order}),200
         return jsonify({'error':'order doesnot exit'}),404
 
     def update_status(self, order_id, status):

@@ -1,5 +1,3 @@
 # Fast-Food-Fast
 
-[![Build Status](https://travis-ci.org/mulondo/Fast-Food-Fast.svg?branch=develop)](https://travis-ci.org/mulondo/Fast-Food-Fast)
-
-[![Coverage Status](https://coveralls.io/repos/github/mulondo/Fast-Food-Fast/badge.svg?branch=api)](https://coveralls.io/github/mulondo/Fast-Food-Fast?branch=api)
+[![Build Status](https://travis-ci.org/mulondo/Fast-Food-Fast.svg?branch=develop)](https://travis-ci.org/mulondo/Fast-Food-Fast)[![Coverage Status](https://coveralls.io/repos/github/mulondo/Fast-Food-Fast/badge.svg?branch=api)](https://coveralls.io/github/mulondo/Fast-Food-Fast?branch=api)[![Maintainability](https://api.codeclimate.com/v1/badges/ed9209343cc8dbd0879d/maintainability)](https://codeclimate.com/github/mulondo/Fast-Food-Fast/maintainability)
