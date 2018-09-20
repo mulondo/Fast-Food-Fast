@@ -12,7 +12,7 @@ Create virtualenv and activate it:
 2. pip install virtualenv
 3. virtualenv venv
 4. activate the virtualenv<br/>
-on windows:<br/>
+on windows:
 ```mypthon\Scripts\activate ```<br/>
-on linux/os:<br/>
+on linux/os:
 ```source/venv/acticate```
