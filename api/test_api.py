@@ -35,7 +35,5 @@ class Test_api(TestCase):
         """ test for update status """
         result = self.client().put('/api/v1/orders/1', content_type='application/json',
                                     data=json.dumps(dict(status="accepted")))
-        self.assertEqual(result.status_code, 201)
-
-        
+        self.assertEqual(result.status_code, 201)        
 
