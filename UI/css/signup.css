@@ -70,7 +70,7 @@ img.food{
     margin: 1% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 35%; /* Could be more or less, depending on screen size */
-    height: 500px
+    height: 550px
 }
 
 /* Add Zoom Animation */
