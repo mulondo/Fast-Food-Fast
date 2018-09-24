@@ -32,9 +32,15 @@
                                 <input type="checkbox"> Sausage =1000shs<br>
                                 <input type="checkbox"> Bread =1000shs<br>
                                 <input type="checkbox"> Hotdog =2500shs<br>
-                                <input type="checkbox"> Eggs =500 @shs<br>                               
-                                <input id="btn_extend" type="submit" value="Order">
-                                <input id="btn_extend" type="submit" value="Cancel">                                
+                                <input type="checkbox"> Eggs =500 @shs<br>
+                                <label for="Location"><b>Location</b></label>
+                                <input type="text"  placeholder="Enter location" required>
+                                <select>
+                                        <option value="cash">Cash</option>
+                                        <option value="mobile">Mobile money</option>
+                                    </select>                            
+                                <input class="btn_extend" type="submit" value="Order">
+                                <input class="btn_extend" type="button" id="breakcancel" value="Cancel">                                
                         </form>
                         
                     </div>                
@@ -54,9 +60,15 @@
                                     <input type="checkbox"> Peas soup =1500shs<br>
                                     <input type="checkbox"> Sweet potato 500shs @piece<br>
                                     <input type="checkbox"> Iris potato =200shs @piece<br>
-                                    <input type="checkbox"> Rice =1500shs<br>                            
-                                    <input id="btn_extend" type="submit" value="Order">
-                                    <input id="btn_extend" type="submit" value="Cancel">                                
+                                    <input type="checkbox"> Rice =1500shs<br>
+                                    <label for="Location"><b>Location</b></label>
+                                    <input type="text"  placeholder="Enter location" required>
+                                    <select>
+                                            <option value="cash">Cash</option>
+                                            <option value="mobile">Mobile money</option>
+                                        </select>                         
+                                    <input class="btn_extend" type="submit" value="Order">
+                                    <input class="btn_extend" id="lunchcancel" type="button" value="Cancel">                                
                             </form>
                             
                         </div>                
@@ -75,9 +87,15 @@
                                     <input type="checkbox"> Cake =1000shs<br>
                                     <input type="checkbox"> Rolex 2000shs<br>
                                     <input type="checkbox"> Sausage =1000shs @piece<br>                                    
-                                    <input type="checkbox"> Rice =1500shs<br>                            
-                                    <input id="btn_extend" type="submit" value="Order">
-                                    <input id="btn_extend" type="submit" value="Cancel">                                
+                                    <input type="checkbox"> Rice =1500shs<br>
+                                    <label for="Location"><b>Location</b></label>                                    
+                                    <input type="text"  placeholder="Enter location" required> 
+                                    <select>
+                                            <option value="cash">Cash</option>
+                                            <option value="mobile">Mobile money</option>
+                                        </select>                         
+                                    <input class="btn_extend" type="submit" value="Order">
+                                    <input class="btn_extend" id="dinnercancel" type="button" value="Cancel">                                
                             </form>
                             
                         </div>                
@@ -99,6 +117,9 @@
     var breakfast_btn = document.getElementById("breakfast_btns");
     var lunch_btn=document.getElementById("lunch_btn_id");
     var dinner_btn=document.getElementById("dinner_btn_id");
+    var lunchcancel_btn=document.getElementById("lunchcancel");
+    var breakcancel_btn=document.getElementById("breakcancel");
+    var dinnercancel_btn=document.getElementById("dinnercancel");
    
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
@@ -107,11 +128,20 @@
     breakfast_btn.onclick = function() {
         breakfastmodal.style.display = "block";
     }
+    breakcancel_btn.onclick = function() {
+        breakfastmodal.style.display = "none";
+    }
     lunch_btn.onclick =function() {
         lunchmodal.style.display = "block";
     }
+    lunchcancel.onclick =function() {
+        lunchmodal.style.display = "none";
+    }
     dinner_btn.onclick =function() {
         dinnermodal.style.display = "block";
+    }
+    dinnercancel_btn.onclick =function() {
+        dinnermodal.style.display = "none";
     }
 
     
