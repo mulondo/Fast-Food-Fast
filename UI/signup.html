@@ -17,19 +17,50 @@
                   
                         <div class="container">
                                 <label for="username"><b>Username</b></label>
-                                <input type="text" placeholder="Enter Username" name="username" required>
+                                <input type="text" id="usrn" placeholder="Enter Username" name="username" required>
 
                                 <label for="email"><b>Email</b></label>
-                                <input type="email" placeholder="Enter email" name="email" required>
+                                <input type="email" id="mail" placeholder="Enter email" name="email" required>
+
+                                <label for="username"><b>Phone number</b></label>
+                                <input type="text" id="phno" placeholder="Enter phone number" name="phonenumber" required>
 
                                 <label for="password"><b>Password</b></label>
-                                <input type="password" placeholder="Enter Password" name="passsword" required>
+                                <input type="password" id="pwd" placeholder="Enter Password" name="passsword" required>
                                 
-                                <input onclick="window.location='customer.html'" type="button" class="signupbtn" value="Signup">                                
+                                <input onclick="on_click_login()" type="button" class="signupbtn" value="Signup">                             
              
                         </div>                        
                     </form>
             </div>
-           
+            <script>              
+                    function on_click_login() {                            
+         
+                            var passwd = document.getElementById('pwd');
+                            var usern  = document.getElementById('usrn');
+                            var email_d = document.getElementById('mail');
+                            var phone = document.getElementById('phno');
+         
+                             if (!usern.checkValidity()|| !passwd.checkValidity()|| !phone.checkValidity()){
+                                 alert("username or password is empty");
+                                 return false;
+                                 }
+
+                            else if(!phone.checkValidity()){
+                                    alert("phone number is empty or invalid");
+                                    return false;
+                                 }
+                            else if(!email_d.checkValidity()){
+                                    alert("email is empty or invalid");
+                                    return false;
+                            }
+                             else{
+                                 window.location.href = "customer.html";                        
+                             }
+                             document.getElementById('display').innerHTML = value;
+                         }
+                        
+         
+                   </script>
     </body>
 </html>
