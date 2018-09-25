@@ -51,5 +51,5 @@ pytest or python -m unittest
  
 |Resource URL|Methods   |Description|
 |----------------|------------|-------------|
-|`/api/v1/orders` |`GET,POST` |`Get all orders,Add an order` |
-|`/api/v1/orders/<int:order_id>` |`GET,PUT`|`Get a specific order, Update the status of a specific order` |
+|`/api/v1/orders    ` |`GET,POST `|`Get all orders,Add an order` |
+|`/api/v1/orders/<int:order_id>  `|`GET,PUT`|`Get a specific order, Update the status of a specific order `|
