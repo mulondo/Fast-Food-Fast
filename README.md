@@ -26,6 +26,14 @@ On linux/os:
 
 ```source/venv/acticate```
 
+Run the application
+
+```
+python run.py
+```
+Test the application by running
+```pytest or python -m unittest```
+
 **API End points**
  
 |Resource URL|Methods   |Description|
