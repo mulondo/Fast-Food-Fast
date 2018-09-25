@@ -7,8 +7,10 @@ FAST-FOOD-FAST is an e-commerce platfrom dealing in food delivery.
 
 Clone the repository from github:<br/>
 
-```git clone https://github.com/mulondo/Fast-Food-Fast.git```
+```
+git clone https://github.com/mulondo/Fast-Food-Fast.git
 
+```
 Create virtualenv and activate it:
 
 Install pip
@@ -21,10 +23,16 @@ activate the virtualenv<br/>
 
 On windows:
 
-```mypthon\Scripts\activate ```<br/>
+```
+mypthon\Scripts\activate 
+
+```
 On linux/os:
 
-```source/venv/acticate```
+```
+source/venv/acticate
+
+```
 
 Run the application
 
@@ -32,7 +40,12 @@ Run the application
 python run.py
 ```
 Test the application by running
-```pytest or python -m unittest```
+
+```
+
+pytest or python -m unittest
+
+```
 
 **API End points**
  
