@@ -1,8 +1,8 @@
 """ api tests"""
 from unittest import TestCase
 from flask import json
-from app import views
-from instance import myapp
+from api.main import views
+from api.instance import myapp
 
 
 class Test_api(TestCase):

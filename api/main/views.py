@@ -1,9 +1,11 @@
 """ api routes"""
 from flask import jsonify, request
-from app.models import CustomerOrders
-from instance import myapp
+from api.main.models import CustomerOrders
+from api.instance import myapp
 
 
+
+  
 ORDRS = CustomerOrders()
 @myapp.route('/api/v1/orders', methods=['POST'])
 def place_order():
