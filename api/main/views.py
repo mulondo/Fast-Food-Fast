@@ -1,12 +1,21 @@
 """ api routes"""
 from flask import jsonify, request
+from flask_jwt_extended import (JWTManager, jwt_required, create_access_token,get_jwt_identity, get_jwt_claims)
 from api.main.models import CustomerOrders
 from api.instance import myapp
 
 
-
-  
 ORDRS = CustomerOrders()
+myapp.config['JWT_SECRET_KEY']='user_secret_key'
+jwt=JWTManager(myapp)
+
+@myapp.route('/signup', methods=['POST'])
+def signup():
+    username=request.json['user']
+    password=request.json['password']
+    return jsonify({'token':access_token}), 200
+
+
 @myapp.route('/api/v1/orders', methods=['POST'])
 def place_order():
     """creates an order"""
