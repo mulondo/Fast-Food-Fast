@@ -10,9 +10,11 @@ def place_order():
     """creates an order"""
     username = request.json['username']
     phone_number = request.json['phone_number']
+    location = request.json['location']
+    payment_mode=request.json['payment']
     my_items = []
     my_items.append(request.json['order_items'])
-    return ORDRS.make_order(username, phone_number, my_items)
+    return ORDRS.make_order(username, phone_number, location, payment_mode, my_items)
 
 @myapp.route('/api/v1/orders', methods=['GET'])
 def get_order():
