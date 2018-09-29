@@ -8,7 +8,7 @@ class CustomerOrders:
         """ contains instance variables"""
         self.orders = []
 
-    def make_order(self, username, phone_number, myitems=list()):
+    def make_order(self, username, phone_number, location, payment, myitems=list()):
         """ performs the logic for addding an order to a list"""
         my_order = []
         my_order = myitems
@@ -19,12 +19,17 @@ class CustomerOrders:
 
         if not phone_number.isdigit() or phone_number.strip() == "" or len(phone_number) < 10 or len(phone_number) > 12:
             return jsonify({'error': 'wrong phone number format'}), 403
+        
+        if not location:
+            return jsonify({'error': 'location is missing'}), 403
 
         order = {
             "username":username,
             "order_id":order_id,
             "phone_number":phone_number,
             "order_items":my_order,
+            "location":location,
+            "payment_mode":payment,
             "status":"None"
         }
         self.orders.append(order)
