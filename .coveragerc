@@ -1,0 +1,7 @@
+[run]
+
+[report]
+
+omit=*/myvirtual/*
+        test/*
+        
