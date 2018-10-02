@@ -1,6 +1,9 @@
 from flask import jsonify
+from main.db import Database
+import psycopg2
 
 
+db_content=Database()
 """ contains datastores and the logic to store and retrieve the data"""
 class CustomerOrders:
     """ Customer_order class handles the necessary datastores"""
@@ -52,3 +55,17 @@ class CustomerOrders:
                 order['status'] = status
                 return jsonify({'status updated':self.orders}),201
         return jsonify({'error':'The order id doesnot exist'}),404
+
+    def create_account(self,username,phone,email,password):
+        try:
+            sql="INSERT INTO users(username,phone_number,email,password) VALUES(%s,%s,%s,%s)"
+            db_content.cur.execute(sql,(username,phone,email,password))
+        except psycopg2.Error as err:
+            return jsonify({'error':str(err)})        
+        return jsonify({'message':'succussfully registered'}),201
+
+    def make_admin(user_id):
+        adm='admin'
+        sql="UPDATE users SET user_type='"+adm+"' WHERE user_id=user_id"
+        db_content.cur.execute(sql)
+        return jsonify({'message':'changed to admin succussfully'}),201
