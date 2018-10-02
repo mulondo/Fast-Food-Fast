@@ -10,11 +10,13 @@ customer={
 class Test_user(BaseTests):
         
 
-    def test_user_signup(self):       
+    def test_user_signup(self):
+        """method testing for sign up"""      
         reg=self.signin_user(customer)
         self.assertEqual(reg.status_code,201)
     
     def test_user_login(self):
+        """ method for testing login """
         self.signin_user(customer)
         customer_info={
                     "username":"joan",
