@@ -6,6 +6,7 @@ from flask_jwt_extended import (JWTManager,verify_jwt_in_request, jwt_required, 
 from main.models import CustomerOrders
 from instance import myapp
 from main.db import Database
+import datetime
 import os
 
 my_db=Database()
@@ -67,20 +68,20 @@ def signp():
     password=request.json['password']
     return ORDRS.create_account(username,phone,email,password)
 
-
 @myapp.route('/make_admin/<int:user_id>',methods=['PUT'])
 def create_admin(user_id):
     return ORDRS.make_admin(user_id)
 
-@myapp.route('/api/v1/orders', methods=['POST'])
+@myapp.route('/api/v1/users/orders', methods=['POST'])
 def place_order():
     """creates an order"""
-    phone_number = request.json['phone_number']
+    customer_id=session['user_id']
+    order_date=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    current_location = request.json['location']
     payment=request.json['payment_mode']
-
     my_items = []
     my_items.append(request.json['order_items'])
-    return ORDRS.make_order(username, phone_number, my_items)
+    return ORDRS.make_order(customer_id, order_date, payment, current_location, my_items)
 
 # @myapp.route('/api/v1/orders/<int:order_id>', methods=['PUT'])
 # def update_status(order_id):
