@@ -25,7 +25,7 @@ class BaseTests(TestCase):
       """
       method allows a user to login and get an access token
       """
-      res = self.client.post(self.default_url+'/auth/login',
+      res = self.client().post(self.default_url+'/auth/login',
                         content_type='application/json', data=json.dumps((login_user)))
       result = json.loads(res.data.decode())
       return result['access_token']
