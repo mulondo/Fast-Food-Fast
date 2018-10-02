@@ -30,3 +30,5 @@ class Database:
         """
         drop_tables = "DROP TABLE Users,Orders"
         Database.cur.execute(drop_tables)
+create=Database()
+create.create_tables()
