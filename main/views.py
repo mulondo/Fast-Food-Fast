@@ -14,7 +14,7 @@ myapp.config['JWT_SECRET_KEY']='user_token'
 myapp.secret_key=os.urandom(24)
 jwt=JWTManager(myapp)
 
-@myapp.route('/login', methods=['POST'])
+@myapp.route('/api/v1/auth/login', methods=['POST'])
 def login():
     users=request.json['username']
     passwrd=request.json['password']
