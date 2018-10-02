@@ -52,7 +52,7 @@ def admain_only(fn):
 def get_order():
     """Gets all orders"""
     return jsonify({'id':session['user_id']})
-    # return ORDRS.get_all_orders()
+    return ORDRS.get_all_orders()
 
 @myapp.route('/api/v1/orders/<int:order_id>', methods=['GET'])
 @admain_only
