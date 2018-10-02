@@ -25,7 +25,7 @@ def login():
             user_id=str(user[3])
             session['user_id']=user[3]
             access_token=create_access_token(identity=user[2])            
-            return jsonify({'access token':access_token})
+            return jsonify({'access_token':access_token}),201
     return jsonify({'error':'user is not known'}), 404
 
 @jwt.user_claims_loader
@@ -47,7 +47,7 @@ def admain_only(fn):
     return wrapper
 
 @myapp.route('/api/v1/orders', methods=['GET'])
-
+@jwt_required
 def get_order():
     """Gets all orders"""
     return jsonify({'id':session['user_id']})
@@ -59,8 +59,8 @@ def get_specific_order(order_id):
     """ gets a specific order given an id"""
     return ORDRS.get_an_order(order_id)
 
-@myapp.route('/signup', methods=['POST'])
-def signup():   
+@myapp.route('/api/v1/auth/signup', methods=['POST'])
+def signp():   
     phone=request.json['phone_number']
     email=request.json['email']
     username=request.json['username']
