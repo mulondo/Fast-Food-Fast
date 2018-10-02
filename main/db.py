@@ -6,7 +6,7 @@ class Database:
     cur=con.cursor()
 
     con.autocommit=True
-    def create_users_table():
+    def create_tables(self):
         user_table="""create table if not exists Users(user_id serial PRIMARY KEY NOT NULL,
                                                         username TEXT NOT NULL,
                                                         user_type TEXT DEFAULT 'customer',
@@ -14,9 +14,6 @@ class Database:
                                                         email TEXT NOT NULL,
                                                         password TEXT NOT NULL
                                                         )"""
-        return Database.cur.execute(user_table)
-    
-    def create_orders_table():
         order_table="""create table if not exists Orders(customer_id INTEGER REFERENCES Users(user_id),
                                                         order_id serial PRIMARY KEY NOT NULL,
                                                         date timestamp NOT NULL,
@@ -24,8 +21,12 @@ class Database:
                                                         location TEXT,
                                                         order_items json NOT NULL
                                                         )"""
-        return Database.cur.execute(order_table)
+        Database.cur.execute(user_table)
+        Database.cur.execute(order_table)        
 
-create_table=Database
-create_table.create_orders_table()
- 
+    def drop_tables(self):
+        """
+        method drops tables
+        """
+        drop_tables = "DROP TABLE Users,Orders"
+        Database.cur.execute(drop_tables)
