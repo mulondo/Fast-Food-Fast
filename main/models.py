@@ -64,7 +64,7 @@ class CustomerOrders:
             return jsonify({'error':str(err)})        
         return jsonify({'message':'succussfully registered'}),201
 
-    def make_admin(user_id):
+    def make_admin(self,user_id):
         adm='admin'
         sql="UPDATE users SET user_type='"+adm+"' WHERE user_id=user_id"
         db_content.cur.execute(sql)
