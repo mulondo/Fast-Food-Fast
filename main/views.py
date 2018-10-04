@@ -99,7 +99,4 @@ def add_menu_items():
 @myapp.route('/api/v1/make_admin/<int:user_id>',methods=['PUT'])
 def create_admin(user_id):
     return ORDRS.make_admin(user_id)
-
-
-
     
