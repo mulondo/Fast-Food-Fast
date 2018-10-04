@@ -1,27 +1,27 @@
 from flask import jsonify,json
 from main.db import Database
+
 import psycopg2
 
 
 db_content=Database()
-""" contains datastores and the logic to store and retrieve the data"""
-class CustomerOrders:
-    """ Customer_order class handles the necessary datastores"""
-    def __init__(self):
-        """ contains instance variables"""
-        self.orders = []
 
+class CustomerOrders:
     def make_order(self, customer_id, order_date, payment, current_location, my_items=list()):
         """ performs the logic for addding an order to a list"""
         customer_order = []
         order_items = my_items
-        
         try:
-            sql="INSERT INTO orders(customer_id,date,payment_mode,order_items,location) VALUES(%s,%s,%s,%s,%s)"
+            sql="INSERT INTO orders(user_id,date,payment_mode,order_items,location) VALUES(%s,%s,%s,%s,%s)"
             db_content.cur.execute(sql,(customer_id, order_date, payment, json.dumps(order_items),current_location))
         except psycopg2.Error as err:
             return jsonify({'error':str(err)}),400       
-        return jsonify({'message':'order succussfully made '}),201                                                        
+        return jsonify({'message':'order succussfully made '}),201
+
+    def get_all_orders(self):
+        db_content.dict_cursor.execute("SELECT orders.date,orders.payment_mode, orders.order_items,users.username,users.phone_number from orders INNER JOIN users ON orders.user_id=users.user_id ")
+        data=db_content.dict_cursor.fetchall() 
+        return jsonify({'results':data})                                                       
 
     def create_account(self,username,phone,email,password):
         try:
@@ -30,9 +30,44 @@ class CustomerOrders:
         except psycopg2.Error as err:
             return jsonify({'error':str(err)})        
         return jsonify({'message':'succussfully registered'}),201
+        
+    def get_role(user_id):
+        db_content.cur.execute("SELECT user_type users WHERE user_id='{}'".format(user_id))
+        role=db_content.cur.fetchone()
+        for rol in role:
+            return role[0]
+
+    def get_menu_items(self):
+        db_content.dict_cursor.execute("SELECT * FROM Items")
+        data=db_content.dict_cursor.fetchall()
+        return jsonify({'results':data}),200
+
+    def add_menu_items(self,item_name,price,quantity):
+        try:
+            sql="INSERT INTO Items(item_name,price,quantity) VALUES(%s,%s,%s)"
+            db_content.cur.execute(sql,(item_name,price,quantity))
+        except psycopg2.Error as err:
+            return jsonify({'error':str(err)})        
+        return jsonify({'message':'Item is added'}),201
+
+    def get_history_orders(self,user_id):
+        db_content.dict_cursor.execute("SELECT * from orders WHERE user_id='{}'".format(user_id))
+        data=db_content.dict_cursor.fetchall()
+        return jsonify({'user_order':data}),200
+    
+    def get_specific_order(self,orderid):
+        db_content.dict_cursor.execute("SELECT * from orders WHERE order_id='{}'".format(orderid))
+        data=db_content.dict_cursor.fetchall()
+        return jsonify({'user_order':data}),200
+    
+    def update_status(self,status,orderid):
+        sql="UPDATE orders SET status='"+status+"' WHERE order_id='{}'".format(orderid)
+        db_content.cur.execute(sql)
+        return jsonify({'message':'order succussfully updated'}),201
+
 
     def make_admin(self,user_id):
         adm='admin'
-        sql="UPDATE users SET user_type='"+adm+"' WHERE user_id=user_id"
+        sql="UPDATE users SET user_type='"+adm+"' WHERE user_id='{}'".format(user_id)
         db_content.cur.execute(sql)
         return jsonify({'message':'changed to admin succussfully'}),201
