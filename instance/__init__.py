@@ -1,5 +1,5 @@
 from flask import Flask
-from errors import Errors_msg
+from instance.errors import Errors_msg
 
 
 myapp=Flask(__name__)
