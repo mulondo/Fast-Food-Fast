@@ -22,10 +22,10 @@ class BaseTests(TestCase):
                   }
       self.login_add={'username':'opio','password':'opioqwt'}
 
-    def test_signup(self):
+    def signin_user(self,user):
         """ test for posting an order """
-        add_result = self.client().post('/api/v1/auth/signup', content_type='application/json', data=json.dumps(self.customer))
-        self.assertEqual(add_result.status_code, 201)
+        add_result = self.client().post('/api/v1/auth/signup', content_type='application/json', data=json.dumps(user))
+        return add_result
 
     def login(self,tp):
         respo=add_result=self.client().post('/api/v1/auth/login',content_type='application/json', data=json.dumps(self.login_add))
@@ -33,20 +33,3 @@ class BaseTests(TestCase):
         token=respo_data['access_token']
         return token
     
-    # def plan_login(self,login_info):
-    #   """ method for plan login """
-    #   return self.client().post(self.default_url+'auth/login',
-    #                     content_type='application/json', data=json.dumps(login_info))
-    
-    # def make_user_admin(self):
-    #   return self.client().put('/make_admin/<int:user_id>',content_type='application/json',data=json.dumps(user_id))
-                                                                              
-    
-    # def make_order(self,order,token):
-    #   return self.client().post(self.default_url+'users/orders',content_type='application/json',
-    #                       data=json.dumps(order),headers=({"acces_token": token}))                       
-    
-    # def tearDown(self):
-    #     """ method destroys trial database after testing is done """
-    #     trial_db = Database()
-    #     trial_db.drop_tables()
