@@ -9,7 +9,7 @@ services:
 
 before_script:
   - psql -c 'create database fast_food_fast;' -U postgres
-  - python db.py
+  - python tab.py
 script:
 - pytest --cov=.
 - coverage
