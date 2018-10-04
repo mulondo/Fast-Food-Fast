@@ -23,17 +23,25 @@ def admain_only(fn):
     return wrapper
 
 @myapp.route('/api/v1/auth/signup', methods=['POST'])
-def signp():   
-    phone=request.json['phone_number']
-    email=request.json['email']
-    username=request.json['username']
-    password=request.json['password']
+def signp():
+    try: 
+        phone=request.json['phone_number']
+        email=request.json['email']
+        username=request.json['username']
+        password=request.json['password']
+    except KeyError:
+        return jsonify({'message':'some fields are missing'}),400
+
     return authorize.create_account(username,phone,email,password)
 
 @myapp.route('/api/v1/auth/login', methods=['POST'])
 def login():
-    username=request.json['username']
-    password=request.json['password']
+    try: 
+        username=request.json['username']
+        password=request.json['password']
+    except KeyError:
+        return jsonify({'message':'some fields are missing'}),400
+
     if username.strip() == "" or password.strip() == "":
             return jsonify({'error':'password or username is missing'}),400
     user_details=authorize.login_check(username,password)
@@ -48,13 +56,17 @@ def login():
 @jwt_required
 def place_order():
     """creates an order"""
-    user_identity=get_jwt_identity()
-    customer_id=user_identity['user_id']
-    order_date=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    current_location = request.json['location']
-    payment=request.json['payment_mode']
-    my_items = []
-    my_items.append(request.json['order_items'])
+    try:
+        user_identity=get_jwt_identity()
+        customer_id=user_identity['user_id']
+        order_date=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        current_location = request.json['location']
+        payment=request.json['payment_mode']
+        my_items = []
+        my_items.append(request.json['order_items'])
+    except KeyError:
+        return jsonify({'message':'some fields are missing'}),400
+
     return food_orders.make_order(customer_id, order_date, payment, current_location, my_items)
 
 @myapp.route('/api/v1/users/orders', methods=['GET'])
@@ -79,7 +91,11 @@ def get_an_order(orderId):
 @myapp.route('/api/v1/orders/<int:orderId>',methods=['PUT'])
 @admain_only
 def update_order_status(orderId):
-    status=request.json['status']
+    try:
+        status=request.json['status']
+    except KeyError:
+        return jsonify({'message':'some fields are missing'}),400
+
     return food_orders.update_status(status,orderId)
 
 @myapp.route('/api/v1/menu', methods=['GET'])
@@ -88,10 +104,13 @@ def get_menu_items():
 
 @myapp.route('/api/v1/menu', methods=['POST'])
 @admain_only
-def add_menu_items():   
-    price=request.json['price']
-    item=request.json['item']
-    quantity=request.json['quantity']
+def add_menu_items():
+    try: 
+        price=request.json['price']
+        item=request.json['item']
+        quantity=request.json['quantity']
+    except KeyError:
+        return jsonify({'message':'some fields are missing'}),400
     return menu_items.add_menu_items(item,price,quantity)
 
 @myapp.route('/api/v1/make_admin/<int:user_id>',methods=['PUT'])
