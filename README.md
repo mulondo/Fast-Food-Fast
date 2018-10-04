@@ -12,13 +12,13 @@ git clone https://github.com/mulondo/Fast-Food-Fast.git
 ```
 Create virtualenv and activate it:
 
-Install pip
+- Install pip
 
-pip install virtualenv
+- pip install virtualenv
 
-virtualenv venv
+- virtualenv venv
 
-activate the virtualenv<br/>
+- activate the virtualenv<br/>
 
 On windows:
 
@@ -48,7 +48,14 @@ pytest or python -m unittest
 
 **API End points**
  
-|Resource URL|Methods   |Description|
-|----------------|------------|-------------|
-|`/api/v1/orders    ` |`GET,POST `|`Get all orders,Add an order` |
-|`/api/v1/orders/<int:order_id>  `|`GET,PUT`|`Get a specific order, Update the status of a specific order `|
+|Resource URL|Methods   |Description|User type|Authentication|
+|----------------|------------|-------------|-------------|
+|`/api/v1/auth/signup`|`POST`|`Allows a user to register`|`customer`|
+|`/api/v1/auth/login`|`POST`|`Allows the user to login`|`customer`|
+|`/api/v1/users/orders`|`POST`|`creates an order`|`customer`|
+|`/api/v1//users/orders `|`GET`|`gets the history of user orders`|`customer`|
+|`/api/v1/orders`|`GET`|`gets all orders made by all customers`|`admin`|
+|`/api/v1/orders/<orderId>`|`GET`|`gets a specific order`|`admin`|
+|`/api/v1/​orders/<orderId>`|` PUT`|`update order status`|`admin`|
+|`/api/v1/menu`|`GET`|`get a list of menu items`|`customer`|
+|`/api/v1/menu`|`POST`|`add menu items`|`admin`|
