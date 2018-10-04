@@ -1,4 +1,4 @@
-
+[![Build Status](https://travis-ci.org/mulondo/Fast-Food-Fast.svg?branch=ft-challenge-three)](https://travis-ci.org/mulondo/Fast-Food-Fast)
 # Fast-Food-Fast
 FAST-FOOD-FAST is an e-commerce platfrom dealing in food delivery.
 
