@@ -22,6 +22,10 @@ def admain_only(fn):
             return fn(*args, **kwargs)
     return wrapper
 
+@myapp.route('/', methods=['GET'])
+def signp():
+    return jsonify({'message':'you are good to go'}),400
+
 @myapp.route('/api/v1/auth/signup', methods=['POST'])
 def signp():
     try: 
