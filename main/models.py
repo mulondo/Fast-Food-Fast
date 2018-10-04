@@ -24,9 +24,9 @@ class CustomerOrders:
         return jsonify({'results':data})                                                       
 
     def create_account(self,username,phone,email,password):
-        if not username or password or phone or email:
+        if username.strip() == "" or password.strip() == "" or phone.strip() == "" or email.strip() == "":
             return jsonify({'error':'some fields are missing'}),400
-        if not username.isalpha() or len(username) < 4 or username.strip() == "":
+        if not username.isalpha() or len(username) < 4:
             return jsonify({'error':'wrong username format'}), 403
 
         if not phone.isdigit() or phone.strip() == "" or len(phone) < 10 or len(phone) > 12:
