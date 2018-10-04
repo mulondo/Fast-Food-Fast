@@ -6,7 +6,7 @@ from main.db import Database
 
 db_content=Database()
 
-class CustomerOrders:
+class Orders:
     def make_order(self, customer_id, order_date, payment, current_location, my_items=list()):
         """ performs the logic for addding an order to a list"""
         customer_order = []
@@ -21,8 +21,23 @@ class CustomerOrders:
     def get_all_orders(self):
         db_content.dict_cursor.execute("SELECT orders.date,orders.payment_mode, orders.order_items,users.username,users.phone_number from orders INNER JOIN users ON orders.user_id=users.user_id ")
         data=db_content.dict_cursor.fetchall() 
-        return jsonify({'results':data})                                                       
+        return jsonify({'results':data})
+    def get_history_orders(self,user_id):
+        db_content.dict_cursor.execute("SELECT * from orders WHERE user_id='{}'".format(user_id))
+        data=db_content.dict_cursor.fetchall()
+        return jsonify({'user_order':data}),200
+    
+    def get_specific_order(self,orderid):
+        db_content.dict_cursor.execute("SELECT * from orders WHERE order_id='{}'".format(orderid))
+        data=db_content.dict_cursor.fetchall()
+        return jsonify({'user_order':data}),200
+    
+    def update_status(self,status,orderid):
+        sql="UPDATE orders SET status='"+status+"' WHERE order_id='{}'".format(orderid)
+        db_content.cur.execute(sql)
+        return jsonify({'message':'order succussfully updated'}),201
 
+class Authorization:
     def create_account(self,username,phone,email,password):
         if username.strip() == "" or password.strip() == "" or phone.strip() == "" or email.strip() == "":
             return jsonify({'error':'some fields are missing'}),400
@@ -43,13 +58,30 @@ class CustomerOrders:
         except psycopg2.Error as err:
             return jsonify({'error':str(err)})        
         return jsonify({'message':'succussfully registered'}),201
-        
+
+    def check_user(self,username):
+        db_content.cur.execute("SELECT username from users")
+        user_details=db_content.cur.fetchall()
+        for user in user_details:
+            if user[0]==username: 
+                return True                 
+        return False
+
+    def login_check(self,username,password):
+        db_content.cur.execute("select username,password,user_type,user_id from users")
+        return db_content.cur.fetchall()
+
     def get_role(user_id):
         db_content.cur.execute("SELECT user_type users WHERE user_id='{}'".format(user_id))
         role=db_content.cur.fetchone()
         for rol in role:
             return role[0]
-
+    def make_admin(self,user_id):
+        adm='admin'
+        sql="UPDATE users SET user_type='"+adm+"' WHERE user_id='{}'".format(user_id)
+        db_content.cur.execute(sql)
+        return jsonify({'message':'changed to admin succussfully'}),201   
+class Menu:
     def get_menu_items(self):
         db_content.dict_cursor.execute("SELECT * FROM Items")
         data=db_content.dict_cursor.fetchall()
@@ -62,36 +94,5 @@ class CustomerOrders:
         except psycopg2.Error as err:
             return jsonify({'error':str(err)})        
         return jsonify({'message':'Item is added'}),201
-
-    def get_history_orders(self,user_id):
-        db_content.dict_cursor.execute("SELECT * from orders WHERE user_id='{}'".format(user_id))
-        data=db_content.dict_cursor.fetchall()
-        return jsonify({'user_order':data}),200
     
-    def get_specific_order(self,orderid):
-        db_content.dict_cursor.execute("SELECT * from orders WHERE order_id='{}'".format(orderid))
-        data=db_content.dict_cursor.fetchall()
-        return jsonify({'user_order':data}),200
     
-    def update_status(self,status,orderid):
-        sql="UPDATE orders SET status='"+status+"' WHERE order_id='{}'".format(orderid)
-        db_content.cur.execute(sql)
-        return jsonify({'message':'order succussfully updated'}),201
-
-
-    def make_admin(self,user_id):
-        adm='admin'
-        sql="UPDATE users SET user_type='"+adm+"' WHERE user_id='{}'".format(user_id)
-        db_content.cur.execute(sql)
-        return jsonify({'message':'changed to admin succussfully'}),201
-    
-    def check_user(self,username):
-        db_content.cur.execute("SELECT username from users")
-        user_details=db_content.cur.fetchall()
-        for user in user_details:
-            if user[0]==username: 
-                return True                 
-        return False
-    def login_check(self,username,password):
-        db_content.cur.execute("select username,password,user_type,user_id from users")
-        return db_content.cur.fetchall()
