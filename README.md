@@ -49,7 +49,7 @@ pytest or python -m unittest
 **API End points**
  
 |Resource URL|Methods   |Description|User type|Authentication|
-|----------------|------------|-------------|-------------|
+|----------------|------------|-------------|-------------|-------------|
 |`/api/v1/auth/signup`|`POST`|`Allows a user to register`|`customer`|
 |`/api/v1/auth/login`|`POST`|`Allows the user to login`|`customer`|
 |`/api/v1/users/orders`|`POST`|`creates an order`|`customer`|
