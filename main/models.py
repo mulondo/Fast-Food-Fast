@@ -39,6 +39,8 @@ class Orders:
 
 class Authorization:
     def create_account(self,username,phone,email,password):
+        if username is None:
+            return jsonify({'error':'some fields are missing'})
         if username.strip() == "" or password.strip() == "" or phone.strip() == "" or email.strip() == "":
             return jsonify({'error':'some fields are missing'}),400
         if not username.isalpha() or len(username) < 4:
