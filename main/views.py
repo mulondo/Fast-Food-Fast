@@ -13,20 +13,13 @@ ORDRS = CustomerOrders()
 myapp.config['JWT_SECRET_KEY']='user_token'
 jwt=JWTManager(myapp)
 
-@jwt.user_claims_loader
-def user_claims(identity):
-    rol=ORDRS.get_role(get_jwt_identity())
-    if rol=='admin':
-        return {'role':'admin'}
-    else:
-        return {'role':'customer'}
 
 def admain_only(fn):
     @wraps(fn)
     def wrapper(*args, **kwargs):
         verify_jwt_in_request()
-        claims = get_jwt_claims()
-        if claims['role'] != 'admin':
+        user_id=get_jwt_identity()
+        if user_id['user_role'] != 'admin':
             return jsonify({'msg':'Admins only!'}), 403
         else:
             return fn(*args, **kwargs)
@@ -42,13 +35,15 @@ def signp():
 
 @myapp.route('/api/v1/auth/login', methods=['POST'])
 def login():
-    users=request.json['username']
-    passwrd=request.json['password']
-    my_db.cur.execute("select username,password,user_type,user_id from users")
-    user_details=my_db.cur.fetchall()
+    username=request.json['username']
+    password=request.json['password']
+    if username.strip() == "" or password.strip() == "":
+            return jsonify({'error':'password or username is missing'}),400
+    user_details=ORDRS.login_check(username,password)
     for user in user_details:
-        if user[0]==users and user[1]==passwrd:           
-            access_token=create_access_token(identity=user[3])            
+        if user[0]==username and user[1]==password: 
+            details= {'user_role':user[2],'user_id':user[3]}       
+            access_token=create_access_token(identity=details)            
             return jsonify({'access_token':access_token}),201
     return jsonify({'error':'user is not known'}), 404
 
@@ -56,7 +51,8 @@ def login():
 @jwt_required
 def place_order():
     """creates an order"""
-    customer_id=get_jwt_identity()
+    user_identity=get_jwt_identity()
+    customer_id=user_identity['user_id']
     order_date=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     current_location = request.json['location']
     payment=request.json['payment_mode']
@@ -67,8 +63,9 @@ def place_order():
 @myapp.route('/api/v1/users/orders', methods=['GET'])
 @jwt_required
 def get_history_order():    
-    """ gets a specific order given an id"""    
-    user_id=get_jwt_identity()
+    """ gets a specific order given an id""" 
+    user_identity=get_jwt_identity()  
+    user_id=user_identity['user_id']
     return ORDRS.get_history_orders(user_id)
 
 @myapp.route('/api/v1/orders', methods=['GET'])
