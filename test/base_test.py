@@ -27,9 +27,12 @@ class BaseTests(TestCase):
         add_result = self.client().post('/api/v1/auth/signup', content_type='application/json', data=json.dumps(user))
         return add_result
 
-    def login(self,userdata):
+    def tok_login(self,userdata):
         respo=add_result=self.client().post('/api/v1/auth/login',content_type='application/json', data=json.dumps(userdata))
         respo_data=json.loads(respo.data.decode())
         token=respo_data['access_token']
         return token
+    def login(self,userdata):
+        respo=add_result=self.client().post('/api/v1/auth/login',content_type='application/json', data=json.dumps(userdata))
+        return respo
     
