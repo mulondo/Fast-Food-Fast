@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mulondo/Fast-Food-Fast.svg?branch=ft-challenge-three)](https://travis-ci.org/mulondo/Fast-Food-Fast)
+[![Build Status](https://travis-ci.org/mulondo/Fast-Food-Fast.svg?branch=ft-challenge-three)](https://travis-ci.org/mulondo/Fast-Food-Fast) [![Coverage Status](https://coveralls.io/repos/github/mulondo/Fast-Food-Fast/badge.svg?branch=ft-challenge-three)](https://coveralls.io/github/mulondo/Fast-Food-Fast?branch=ft-challenge-three)
 # Fast-Food-Fast
 FAST-FOOD-FAST is an e-commerce platfrom dealing in food delivery.
 
