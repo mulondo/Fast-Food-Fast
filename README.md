@@ -50,12 +50,12 @@ pytest or python -m unittest
  
 |Resource URL|Methods   |Description|User type|Authentication|
 |----------------|------------|-------------|-------------|-------------|
-|`/api/v1/auth/signup`|`POST`|`Allows a user to register`|`customer`|
-|`/api/v1/auth/login`|`POST`|`Allows the user to login`|`customer`|
-|`/api/v1/users/orders`|`POST`|`creates an order`|`customer`|
-|`/api/v1//users/orders `|`GET`|`gets the history of user orders`|`customer`|
-|`/api/v1/orders`|`GET`|`gets all orders made by all customers`|`admin`|
-|`/api/v1/orders/<orderId>`|`GET`|`gets a specific order`|`admin`|
-|`/api/v1/​orders/<orderId>`|` PUT`|`update order status`|`admin`|
-|`/api/v1/menu`|`GET`|`get a list of menu items`|`customer`|
-|`/api/v1/menu`|`POST`|`add menu items`|`admin`|
+|`/api/v1/auth/signup`|`POST`|`Allows a user to register`|`customer`|`jwt`|
+|`/api/v1/auth/login`|`POST`|`Allows the user to login`|`customer`|`jwt`|
+|`/api/v1/users/orders`|`POST`|`creates an order`|`customer`|`jwt`|
+|`/api/v1//users/orders `|`GET`|`gets the history of user orders`|`customer`|`jwt`|
+|`/api/v1/orders`|`GET`|`gets all orders made by all customers`|`admin`|`jwt`|
+|`/api/v1/orders/<orderId>`|`GET`|`gets a specific order`|`admin`|`jwt`|
+|`/api/v1/​orders/<orderId>`|` PUT`|`update order status`|`admin`|`jwt`|
+|`/api/v1/menu`|`GET`|`get a list of menu items`|`customer`|`jwt`|
+|`/api/v1/menu`|`POST`|`add menu items`|`admin`|`jwt`|
