@@ -10,7 +10,6 @@ import datetime
 
 my_db=Database()
 ORDRS = CustomerOrders()
-myapp.config['JWT_SECRET_KEY']='user_token'
 jwt=JWTManager(myapp)
 
 
