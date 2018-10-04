@@ -15,7 +15,8 @@ jwt=JWTManager(myapp)
 
 @jwt.user_claims_loader
 def user_claims(identity):
-    if identity=='admin':
+    rol=ORDRS.get_role(get_jwt_identity())
+    if rol=='admin':
         return {'role':'admin'}
     else:
         return {'role':'customer'}
@@ -31,6 +32,14 @@ def admain_only(fn):
             return fn(*args, **kwargs)
     return wrapper
 
+@myapp.route('/api/v1/auth/signup', methods=['POST'])
+def signp():   
+    phone=request.json['phone_number']
+    email=request.json['email']
+    username=request.json['username']
+    password=request.json['password']
+    return ORDRS.create_account(username,phone,email,password)
+
 @myapp.route('/api/v1/auth/login', methods=['POST'])
 def login():
     users=request.json['username']
@@ -42,56 +51,6 @@ def login():
             access_token=create_access_token(identity=user[3])            
             return jsonify({'access_token':access_token}),201
     return jsonify({'error':'user is not known'}), 404
-
-@myapp.route('/api/v1/orders', methods=['GET'])
-#@admain_only
-def get_order():
-    """Gets all orders"""
-    return ORDRS.get_all_orders()
-
-@myapp.route('/api/v1/users/orders', methods=['GET'])
-@jwt_required
-def get_history_order():    
-    """ gets a specific order given an id"""    
-    user_id=get_jwt_identity()
-    return ORDRS.get_history_orders(user_id)
-
-@myapp.route('/api/v1/auth/signup', methods=['POST'])
-def signp():   
-    phone=request.json['phone_number']
-    email=request.json['email']
-    username=request.json['username']
-    password=request.json['password']
-    return ORDRS.create_account(username,phone,email,password)
-
-@myapp.route('/api/v1/menu', methods=['POST'])
-#@admain_only
-def add_menu_items():   
-    price=request.json['price']
-    item=request.json['item']
-    quantity=request.json['quantity']
-    return ORDRS.add_menu_items(item,price,quantity)
-
-#orders​/<orderId>
-@myapp.route('/api/v1/orders/<int:orderId>', methods=['GET'])
-#@admain_only
-def get_an_order(orderId):   
-    return ORDRS.get_specific_order(orderId)
-
-@myapp.route('/api/v1/orders/<int:orderId>',methods=['PUT'])
-#@admain_only
-def update_order_status(orderId):
-    status=request.json['status']
-    return ORDRS.update_status(status,orderId)
-
-@myapp.route('/api/v1/menu', methods=['GET'])
-def get_menu_items():
-    return ORDRS.get_menu_items()
-
-
-@myapp.route('/api/v1/make_admin/<int:user_id>',methods=['PUT'])
-def create_admin(user_id):
-    return ORDRS.make_admin(user_id)
 
 @myapp.route('/api/v1/users/orders', methods=['POST'])
 @jwt_required
@@ -105,9 +64,46 @@ def place_order():
     my_items.append(request.json['order_items'])
     return ORDRS.make_order(customer_id, order_date, payment, current_location, my_items)
 
-# @myapp.route('/api/v1/orders/<int:order_id>', methods=['PUT'])
-# def update_status(order_id):
-#     """ Updates the status"""
-#     status = request.json['status']
-#     return ORDRS.update_status(order_id, status)
+@myapp.route('/api/v1/users/orders', methods=['GET'])
+@jwt_required
+def get_history_order():    
+    """ gets a specific order given an id"""    
+    user_id=get_jwt_identity()
+    return ORDRS.get_history_orders(user_id)
+
+@myapp.route('/api/v1/orders', methods=['GET'])
+@admain_only
+def get_order():
+    """Gets all orders"""
+    return ORDRS.get_all_orders()
+
+@myapp.route('/api/v1/orders/<int:orderId>', methods=['GET'])
+@admain_only
+def get_an_order(orderId):   
+    return ORDRS.get_specific_order(orderId)
+
+@myapp.route('/api/v1/orders/<int:orderId>',methods=['PUT'])
+@admain_only
+def update_order_status(orderId):
+    status=request.json['status']
+    return ORDRS.update_status(status,orderId)
+
+@myapp.route('/api/v1/menu', methods=['GET'])
+def get_menu_items():
+    return ORDRS.get_menu_items()
+
+@myapp.route('/api/v1/menu', methods=['POST'])
+@admain_only
+def add_menu_items():   
+    price=request.json['price']
+    item=request.json['item']
+    quantity=request.json['quantity']
+    return ORDRS.add_menu_items(item,price,quantity)
+
+@myapp.route('/api/v1/make_admin/<int:user_id>',methods=['PUT'])
+def create_admin(user_id):
+    return ORDRS.make_admin(user_id)
+
+
+
     
