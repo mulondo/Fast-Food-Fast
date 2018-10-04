@@ -23,7 +23,7 @@ def admain_only(fn):
     return wrapper
 
 @myapp.route('/', methods=['GET'])
-def signp():
+def home():
     return jsonify({'message':'you are good to go'}),400
 
 @myapp.route('/api/v1/auth/signup', methods=['POST'])
