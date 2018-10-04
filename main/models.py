@@ -1,7 +1,7 @@
 from flask import jsonify,json
-from main.db import Database
-
+import re
 import psycopg2
+from main.db import Database
 
 
 db_content=Database()
@@ -24,6 +24,16 @@ class CustomerOrders:
         return jsonify({'results':data})                                                       
 
     def create_account(self,username,phone,email,password):
+        if not username or password or phone or email:
+            return jsonify({'error':'some fields are missing'}),400
+        if not username.isalpha() or len(username) < 4 or username.strip() == "":
+            return jsonify({'error':'wrong username format'}), 403
+
+        if not phone.isdigit() or phone.strip() == "" or len(phone) < 10 or len(phone) > 12:
+            return jsonify({'error': 'wrong phone number format'}), 403
+        email_match=re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', email)
+        if email_match == None:
+	        return jsonify({'error':'Incorrect email format'})
         try:
             sql="INSERT INTO users(username,phone_number,email,password) VALUES(%s,%s,%s,%s)"
             db_content.cur.execute(sql,(username,phone,email,password))
