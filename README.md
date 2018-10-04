@@ -59,3 +59,4 @@ pytest or python -m unittest
 |`/api/v1/​orders/<orderId>`|` PUT`|`update order status`|`admin`|`jwt`|
 |`/api/v1/menu`|`GET`|`get a list of menu items`|`customer`|`jwt`|
 |`/api/v1/menu`|`POST`|`add menu items`|`admin`|`jwt`|
+|`/api/v1/make_admin/<int:user_id>`|`PUT`|`assign admin role`|`admin`|`jwt`|
