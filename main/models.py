@@ -34,6 +34,9 @@ class CustomerOrders:
         email_match=re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', email)
         if email_match == None:
 	        return jsonify({'error':'Incorrect email format'})
+        
+        if self.check_user(username)==True:
+            return jsonify({'message':'username already exist'})
         try:
             sql="INSERT INTO users(username,phone_number,email,password) VALUES(%s,%s,%s,%s)"
             db_content.cur.execute(sql,(username,phone,email,password))
@@ -81,3 +84,14 @@ class CustomerOrders:
         sql="UPDATE users SET user_type='"+adm+"' WHERE user_id='{}'".format(user_id)
         db_content.cur.execute(sql)
         return jsonify({'message':'changed to admin succussfully'}),201
+    
+    def check_user(self,username):
+        db_content.cur.execute("SELECT username from users")
+        user_details=db_content.cur.fetchall()
+        for user in user_details:
+            if user[0]==username: 
+                return True                 
+        return False
+    def login_check(self,username,password):
+        db_content.cur.execute("select username,password,user_type,user_id from users")
+        return db_content.cur.fetchall()
