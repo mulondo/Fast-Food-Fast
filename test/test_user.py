@@ -6,7 +6,7 @@ class Test_user(BaseTests):
     def test_user_signup(self):
         """method testing for sign up"""      
         reg=self.signin_user(self.customer)
-        self.assertEqual(reg.status_code,200)
+        self.assertEqual(reg.status_code,201)
     
  
     
