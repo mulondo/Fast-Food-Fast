@@ -71,11 +71,6 @@ class Authorization:
         db_content.cur.execute("select username,password,user_type,user_id from users")
         return db_content.cur.fetchall()
 
-    def get_role(user_id):
-        db_content.cur.execute("SELECT user_type users WHERE user_id='{}'".format(user_id))
-        role=db_content.cur.fetchone()
-        for rol in role:
-            return role[0]
     def make_admin(self,user_id):
         adm='admin'
         sql="UPDATE users SET user_type='"+adm+"' WHERE user_id='{}'".format(user_id)
