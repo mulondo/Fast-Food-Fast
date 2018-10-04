@@ -10,3 +10,6 @@ class Test_user(BaseTests):
     def test_login(self):
         res=self.login(self.login_add)
         self.assertEqual(res.status_code,201)
+    def test_login_with_wrong_creditials(self):
+        
+    
