@@ -1,17 +1,15 @@
 """ api routes"""
 from flask import jsonify, request
 from functools import wraps
-import psycopg2
 from flask_jwt_extended import (JWTManager,verify_jwt_in_request, jwt_required, create_access_token,get_jwt_identity, get_jwt_claims)
-from main.models import CustomerOrders
+from main.models import Orders,Authorization,Menu
 from instance import myapp
-from main.db import Database
 import datetime
 
-my_db=Database()
-ORDRS = CustomerOrders()
+food_orders = Orders()
+menu_items = Menu()
+authorize=Authorization()
 jwt=JWTManager(myapp)
-
 
 def admain_only(fn):
     @wraps(fn)
@@ -30,7 +28,7 @@ def signp():
     email=request.json['email']
     username=request.json['username']
     password=request.json['password']
-    return ORDRS.create_account(username,phone,email,password)
+    return authorize.create_account(username,phone,email,password)
 
 @myapp.route('/api/v1/auth/login', methods=['POST'])
 def login():
@@ -38,7 +36,7 @@ def login():
     password=request.json['password']
     if username.strip() == "" or password.strip() == "":
             return jsonify({'error':'password or username is missing'}),400
-    user_details=ORDRS.login_check(username,password)
+    user_details=authorize.login_check(username,password)
     for user in user_details:
         if user[0]==username and user[1]==password: 
             details= {'user_role':user[2],'user_id':user[3]}       
@@ -57,7 +55,7 @@ def place_order():
     payment=request.json['payment_mode']
     my_items = []
     my_items.append(request.json['order_items'])
-    return ORDRS.make_order(customer_id, order_date, payment, current_location, my_items)
+    return food_orders.make_order(customer_id, order_date, payment, current_location, my_items)
 
 @myapp.route('/api/v1/users/orders', methods=['GET'])
 @jwt_required
@@ -65,28 +63,28 @@ def get_history_order():
     """ gets a specific order given an id""" 
     user_identity=get_jwt_identity()  
     user_id=user_identity['user_id']
-    return ORDRS.get_history_orders(user_id)
+    return food_orders.get_history_orders(user_id)
 
 @myapp.route('/api/v1/orders', methods=['GET'])
 @admain_only
 def get_order():
     """Gets all orders"""
-    return ORDRS.get_all_orders()
+    return food_orders.get_all_orders()
 
 @myapp.route('/api/v1/orders/<int:orderId>', methods=['GET'])
 @admain_only
 def get_an_order(orderId):   
-    return ORDRS.get_specific_order(orderId)
+    return food_orders.get_specific_order(orderId)
 
 @myapp.route('/api/v1/orders/<int:orderId>',methods=['PUT'])
 @admain_only
 def update_order_status(orderId):
     status=request.json['status']
-    return ORDRS.update_status(status,orderId)
+    return food_orders.update_status(status,orderId)
 
 @myapp.route('/api/v1/menu', methods=['GET'])
 def get_menu_items():
-    return ORDRS.get_menu_items()
+    return menu_items.get_menu_items()
 
 @myapp.route('/api/v1/menu', methods=['POST'])
 @admain_only
@@ -94,9 +92,9 @@ def add_menu_items():
     price=request.json['price']
     item=request.json['item']
     quantity=request.json['quantity']
-    return ORDRS.add_menu_items(item,price,quantity)
+    return menu_items.add_menu_items(item,price,quantity)
 
 @myapp.route('/api/v1/make_admin/<int:user_id>',methods=['PUT'])
 def create_admin(user_id):
-    return ORDRS.make_admin(user_id)
+    return authorize.make_admin(user_id)
     
