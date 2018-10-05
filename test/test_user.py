@@ -22,16 +22,20 @@ class Test_user(BaseTests):
         self.assertEqual(res.status_code,400)
     
     def  test_make_admin(self):
-        result = self.client().put('/api/v2/make_admin/1', content_type='application/json')
+        result = self.client().put('/api/v2/make_admin/11', content_type='application/json')
         self.assertEqual(result.status_code,201)
     
     def test_make_menu(self):
-        list_items={'price':2000,'item':'chapati','quantity':'one'}
+        list_items={'price':2000,'item':'chapati', 'quantity':'one'}
         result = self.client().post('/api/v2/users/orders',headers={'Authorization': 'Bearer '+ self.tok_login(self.login_add)},
                                                                                     json=dict(list_items))
-        self.assertEqual(result.status_code,400)
+        self.assertEqual(result.status_code,201)
     
     def test_get_menu(self):
+        result =self.client().get('/api/v2/menu',headers={'Authorization': 'Bearer '+ self.tok_login(self.login_add)})
+        self.assertEqual(result.status_code, 200)
+    
+    def test_get_all_orders(self):
         result =self.client().get('/api/v2/menu',headers={'Authorization': 'Bearer '+ self.tok_login(self.login_add)})
         self.assertEqual(result.status_code, 200)
         
