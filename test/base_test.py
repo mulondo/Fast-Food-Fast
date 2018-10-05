@@ -15,6 +15,7 @@ class BaseTests(TestCase):
       self.order={'location':'kampala',
                 'payment_mode':'cash',
                 'order_items':[{'items':'eggs','price':'1000'}]}
+
       self.customer={'phone_number':'0703455445',
                       'email':'opi@gmail.com',
                       'username':'opio',
@@ -32,7 +33,9 @@ class BaseTests(TestCase):
         respo_data=json.loads(respo.data.decode())
         token=respo_data['access_token']
         return token
+        
     def login(self,userdata):
         respo=self.client().post('/api/v1/auth/login',content_type='application/json', data=json.dumps(userdata))
         return respo
+    
     
