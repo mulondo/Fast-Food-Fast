@@ -120,7 +120,6 @@ def add_menu_items():
     return menu_items.add_menu_items(item,price,quantity)
 
 @myapp.route('/api/v2/make_admin/<int:user_id>',methods=['PUT'])
-@admain_only
 def create_admin(user_id):
     return authorize.make_admin(user_id)
     
