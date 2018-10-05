@@ -1,6 +1,7 @@
 from flask import jsonify,json
 import re
 import psycopg2
+from werkzeug.security import generate_password_hash,check_password_hash
 from main.db import Database
 
 
@@ -9,7 +10,7 @@ db_content=Database()
 class Orders:
     def make_order(self, customer_id, order_date, payment, current_location, my_items=list()):
         """ performs the logic for addding an order to a list"""
-        customer_order = []
+
         order_items = my_items
         try:
             sql="INSERT INTO orders(user_id,date,payment_mode,order_items,location) VALUES(%s,%s,%s,%s,%s)"
@@ -36,6 +37,14 @@ class Orders:
         sql="UPDATE orders SET status='"+status+"' WHERE order_id='{}'".format(orderid)
         db_content.cur.execute(sql)
         return jsonify({'message':'order succussfully updated'}),201
+    
+    def check_item(self,item):
+        db_content.cur.execute("SELECT username from users")
+        user_details=db_content.cur.fetchall()
+        for user in user_details:
+            if user[0]==username: 
+                return True                 
+        return False
 
 class Authorization:
     def create_account(self,username,phone,email,password):
@@ -54,9 +63,10 @@ class Authorization:
         
         if self.check_user(username)==True:
             return jsonify({'message':'username already exist'})
+        hash_password=generate_password_hash(password, method='sha256')
         try:
             sql="INSERT INTO users(username,phone_number,email,password) VALUES(%s,%s,%s,%s)"
-            db_content.cur.execute(sql,(username,phone,email,password))
+            db_content.cur.execute(sql,(username,phone,email,hash_password))
         except psycopg2.Error as err:
             return jsonify({'error':str(err)})        
         return jsonify({'message':'succussfully registered'}),201
