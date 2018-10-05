@@ -27,7 +27,7 @@ def admain_only(fn):
 def home():
     return jsonify({'message':'you are good to go'}),400
 
-@myapp.route('/api/v1/auth/signup', methods=['POST'])
+@myapp.route('/api/v2/auth/signup', methods=['POST'])
 def signp():
     try: 
         phone=request.json['phone_number']
@@ -39,7 +39,7 @@ def signp():
 
     return authorize.create_account(username,phone,email,password)
 
-@myapp.route('/api/v1/auth/login', methods=['POST'])
+@myapp.route('/api/v2/auth/login', methods=['POST'])
 def login():
     try: 
         username=request.json['username']
@@ -57,7 +57,7 @@ def login():
             return jsonify({'access_token':access_token}),201
     return jsonify({'error':'user is not known'}), 404
 
-@myapp.route('/api/v1/users/orders', methods=['POST'])
+@myapp.route('/api/v2/users/orders', methods=['POST'])
 @jwt_required
 def place_order():
     """creates an order"""
@@ -74,7 +74,7 @@ def place_order():
 
     return food_orders.make_order(customer_id, order_date, payment, current_location, my_items)
 
-@myapp.route('/api/v1/users/orders', methods=['GET'])
+@myapp.route('/api/v2/users/orders', methods=['GET'])
 @jwt_required
 def get_history_order():    
     """ gets a specific order given an id""" 
@@ -82,18 +82,18 @@ def get_history_order():
     user_id=user_identity['user_id']
     return food_orders.get_history_orders(user_id)
 
-@myapp.route('/api/v1/orders', methods=['GET'])
+@myapp.route('/api/v2/orders', methods=['GET'])
 @admain_only
 def get_order():
     """Gets all orders"""
     return food_orders.get_all_orders()
 
-@myapp.route('/api/v1/orders/<int:orderId>', methods=['GET'])
+@myapp.route('/api/v2/orders/<int:orderId>', methods=['GET'])
 @admain_only
 def get_an_order(orderId):   
     return food_orders.get_specific_order(orderId)
 
-@myapp.route('/api/v1/orders/<int:orderId>',methods=['PUT'])
+@myapp.route('/api/v2/orders/<int:orderId>',methods=['PUT'])
 @admain_only
 def update_order_status(orderId):
     try:
@@ -103,11 +103,11 @@ def update_order_status(orderId):
 
     return food_orders.update_status(status,orderId)
 
-@myapp.route('/api/v1/menu', methods=['GET'])
+@myapp.route('/api/v2/menu', methods=['GET'])
 def get_menu_items():
     return menu_items.get_menu_items()
 
-@myapp.route('/api/v1/menu', methods=['POST'])
+@myapp.route('/api/v2/menu', methods=['POST'])
 @admain_only
 def add_menu_items():
     try: 
@@ -118,7 +118,7 @@ def add_menu_items():
         return jsonify({'message':'some fields are missing'}),400
     return menu_items.add_menu_items(item,price,quantity)
 
-@myapp.route('/api/v1/make_admin/<int:user_id>',methods=['PUT'])
+@myapp.route('/api/v2/make_admin/<int:user_id>',methods=['PUT'])
 def create_admin(user_id):
     return authorize.make_admin(user_id)
     
