@@ -10,14 +10,15 @@ db_content=Database()
 class Orders:
     def make_order(self, customer_id, order_date, payment, current_location, my_items=list()):
         """ performs the logic for addding an order to a list"""
-
+        if len(my_items)==0:
+            return jsonify({'message':'please pass in the menu items!'}),400
         order_items = my_items
         try:
             sql="INSERT INTO orders(user_id,date,payment_mode,order_items,location) VALUES(%s,%s,%s,%s,%s)"
             db_content.cur.execute(sql,(customer_id, order_date, payment, json.dumps(order_items),current_location))
         except psycopg2.Error as err:
             return jsonify({'error':str(err)}),400       
-        return jsonify({'message':'order succussfully made '}),201
+        return jsonify({'message':'order succussfully made!'}),201
 
     def get_all_orders(self):
         db_content.dict_cursor.execute("SELECT orders.date,orders.payment_mode, orders.order_items,users.username,users.phone_number from orders INNER JOIN users ON orders.user_id=users.user_id ")
