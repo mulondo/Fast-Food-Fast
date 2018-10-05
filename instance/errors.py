@@ -1,22 +1,17 @@
-class Errors_msg:
 
-    def not_found():
-        result = {
-        "message": "The requested resource is not found"
-        }
-        return jsonify(result), 404
-    def bad_request():
-        result = {
-        "message": "Incorrect request, please check your inputs"
-        }
-        return jsonify(result), 400
-    def internal_server_error():
-        result = {
-        "message": "Unable to process your request"
-        }
-        return jsonify(result),500
+# class Errors_msg:
 
-    def method_not_allowed():
-        result = {"message":"Rejected request"}
-        return jsonify(result), 405
+#     def not_found(self):
+#         result = {'message':'The requested resource is not found'}
+#         return result,404
+#     def bad_request(self):
+#         result = 'Incorrect request, please check your inputs'
+#         return result, 400
+#     def internal_server_error(self):
+#         result = 'Unable to process your request'
+#         return result,500
+
+#     def method_not_allowed(self):
+#         result = 'Rejected request'
+#         return result, 405
 
