@@ -18,10 +18,10 @@ class BaseTests(TestCase):
 
       self.customer={'phone_number':'0703455445',
                       'email':'opi@gmail.com',
-                      'username':'opio',
-                      'password':'opioqwt'
+                      'username':'johnpaul',
+                      'password':'pwd'
                   }
-      self.login_add={'username':'opio','password':'opioqwt'}
+      self.login_add={'username':'johnpaul','password':'pwd'}
 
     def signin_user(self,user):
         """ test for posting an order """
