@@ -1,6 +1,7 @@
 """ api routes"""
 from flask import jsonify, request
 from functools import wraps
+from werkzeug.security import generate_password_hash,check_password_hash
 from flask_jwt_extended import (JWTManager,verify_jwt_in_request, jwt_required, create_access_token,get_jwt_identity, get_jwt_claims)
 from main.models import Orders,Authorization,Menu
 from instance import myapp
@@ -50,7 +51,7 @@ def login():
             return jsonify({'error':'password or username is missing'}),400
     user_details=authorize.login_check(username,password)
     for user in user_details:
-        if user[0]==username and user[1]==password: 
+        if user[0]==username and check_password_hash(user[1],password): 
             details= {'user_role':user[2],'user_id':user[3]}       
             access_token=create_access_token(identity=details)            
             return jsonify({'access_token':access_token}),201
