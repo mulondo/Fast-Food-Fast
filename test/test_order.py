@@ -22,7 +22,10 @@ class Test_oders(BaseTests):
         self.assertEqual(result.status_code, 200)
     
     def test_get_all_order(self):
-        result =self.client().get('/api/v2/users/orders',headers={'Authorization': 'Bearer '+ self.tok_login(self.login_add)})
+        result =self.client().get('/api/v2/orders',headers={'Authorization': 'Bearer '+ self.tok_login(self.login_add)})
         self.assertEqual(result.status_code, 200)
     
-
+    def test_get_aspecific_order(self):
+        result =self.client().get('/api/v2/orders/1',headers={'Authorization': 'Bearer '+ self.tok_login(self.login_add)})
+        self.assertEqual(result.status_code, 200)
+        
