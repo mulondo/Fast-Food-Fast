@@ -2,7 +2,7 @@
 # Fast-Food-Fast
 FAST-FOOD-FAST is an e-commerce platfrom dealing in food delivery.
 
-##Installation and setup
+## Installation and setup
 
 Clone the repository from github:<br/>
 
