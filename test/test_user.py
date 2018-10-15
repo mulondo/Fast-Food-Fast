@@ -29,7 +29,7 @@ class Test_user(BaseTests):
         list_items={'price':2000,'item':'chapati', 'quantity':'one'}
         result = self.client().post('/api/v2/users/orders',headers={'Authorization': 'Bearer '+ self.tok_login(self.login_add)},
                                                                                     json=dict(list_items))
-        self.assertEqual(result.status_code,201)
+        self.assertEqual(result.status_code,400)
     
     def test_get_menu(self):
         result =self.client().get('/api/v2/menu',headers={'Authorization': 'Bearer '+ self.tok_login(self.login_add)})
