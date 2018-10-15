@@ -83,7 +83,7 @@ def get_history_order():
     return food_orders.get_history_orders(user_id)
 
 @myapp.route('/api/v2/orders', methods=['GET'])
-@admain_only
+# @admain_only
 def get_order():
     """Gets all orders"""
     return food_orders.get_all_orders()
@@ -104,7 +104,7 @@ def update_order_status(orderId):
     return food_orders.update_status(status,orderId)
 
 @myapp.route('/api/v2/menu', methods=['GET'])
-@jwt_required
+# @jwt_required
 def get_menu_items():
     return menu_items.get_menu_items()
 
