@@ -10,7 +10,7 @@
 
     <body>
         <div class="modal">
-            <form class="modal-content animate">
+            <form class="modal-content animate" name="sigin">
                 <h1>Fast-Food-Fast</h1>
                 <div id="imgcontainer">    
                     <img src="UI/images/food.jpg" alt="User" style="width:100%" class="food">
@@ -18,10 +18,10 @@
           
                 <div class="container">
                         <label for="username"><b>Username</b></label>
-                        <input type="text" placeholder="Enter Username" name="username" required>
+                        <input type="text" id="usrnm" placeholder="Enter Username" name="username" required>
                 
                         <label for="password"><b>Password</b></label>
-                        <input type="password" placeholder="***************" name="passsword" required>
+                        <input type="password" id="pwd" placeholder="***************" name="passsword" required>
                         <label for="username"><b>Select role</b></label>
                         <select id="selected">
                             <option value="customer">Customer</option>
@@ -36,11 +36,19 @@
                 </div>
           </form>
           </div>
-          <script>
+          <script>              
            function on_click_login() {
                     var selected_role = document.getElementById('selected');
                     var values =selected_role.value
-                    if(values=="admin"){
+
+                    var usern = document.getElementById('pwd');
+                    var passwd = document.getElementById('usrnm');
+
+                    if (!usern.checkValidity()||!passwd.checkValidity()) {
+                        alert("username or password is empty");
+                        return false;
+                    }
+                    else if(values=="admin"){
                         window.location.href = "UI/admin.html";
                     }
                     else{
