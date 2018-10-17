@@ -22,12 +22,7 @@
                 
                         <label for="password"><b>Password</b></label>
                         <input type="password" id="pwd" placeholder="***************" name="passsword" required>
-                        <label for="username"><b>Select role</b></label>
-                        <select id="selected">
-                            <option value="customer">Customer</option>
-                            <option value="admin">Admin</option>
-                        </select>
-                        <input type="button" id="login_id" onclick="on_click_login()" class="loginbtn" value="Login">                       
+                        <input type="button" id="login_id" class="loginbtn" value="Login">                       
                         
                         <span>
                             <a href="UI/forgot_pwd.html">Forgot password</a>
@@ -36,28 +31,6 @@
                 </div>
           </form>
           </div>
-          <script>              
-           function on_click_login() {
-                    var selected_role = document.getElementById('selected');
-                    var values =selected_role.value
-
-                    var usern = document.getElementById('pwd');
-                    var passwd = document.getElementById('usrnm');
-
-                    if (!usern.checkValidity()||!passwd.checkValidity()) {
-                        alert("username or password is empty");
-                        return false;
-                    }
-                    else if(values=="admin"){
-                        window.location.href = "UI/admin.html";
-                    }
-                    else{
-                        window.location.href = "UI/customer.html";                        
-                    }
-                    document.getElementById('display').innerHTML = value;
-                }
-               
-
-          </script>
+          <script src="UI/js/login.js"></script>
     </body>
 </html>
