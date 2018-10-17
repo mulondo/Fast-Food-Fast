@@ -35,7 +35,7 @@ def signp():
         username=request.json['username']
         password=request.json['password']
     except KeyError:
-        return jsonify({'message':'some fields are missing'}),400
+        return jsonify({'message':'fields are missing'}),400
 
     return authorize.create_account(username,phone,email,password)
 
