@@ -13,10 +13,21 @@ function onclick(){
         'Content-Type': 'application/json'
         }
     }).then(res=>res.json())
-    .then(response=>console.log('succussfully registered! ',JSON.stringify(response)))
-    .catch(error=>console.error('Error',error));
+    .then((response)=>{
+        var msg=(response);
+        if (msg.message=="succussfully registered"){
+            alert("you have succussfully created an account");
+            window.location.href="customer.html";
+        }
+        else{
+            alert("please try again");
+        }
+    })   
+    .catch(error=>alert("errors"));
   
 }
+
+
 
 function on_click_login() {
     var passwd = document.getElementById('pwd');
