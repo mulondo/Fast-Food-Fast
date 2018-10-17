@@ -28,39 +28,11 @@
                                 <label for="password"><b>Password</b></label>
                                 <input type="password" id="pwd" placeholder="Enter Password" name="passsword" required>
                                 
-                                <input onclick="on_click_login()" type="button" class="signupbtn" value="Signup">                             
+                                <input id="signup" type="button" class="signupbtn" value="Signup">                             
              
                         </div>                        
                     </form>
             </div>
-            <script>              
-                    function on_click_login() {                            
-         
-                            var passwd = document.getElementById('pwd');
-                            var usern  = document.getElementById('usrn');
-                            var email_d = document.getElementById('mail');
-                            var phone = document.getElementById('phno');
-         
-                             if (!usern.checkValidity()|| !passwd.checkValidity()|| !phone.checkValidity()){
-                                 alert("username or password is empty");
-                                 return false;
-                                 }
-
-                            else if(!phone.checkValidity()){
-                                    alert("phone number is empty or invalid");
-                                    return false;
-                                 }
-                            else if(!email_d.checkValidity()){
-                                    alert("email is empty or invalid");
-                                    return false;
-                            }
-                             else{
-                                 window.location.href = "customer.html";                        
-                             }
-                             document.getElementById('display').innerHTML = value;
-                         }
-                        
-         
-                   </script>
+            <script src="js/auth.js"> </script>
     </body>
 </html>
