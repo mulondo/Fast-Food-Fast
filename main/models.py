@@ -104,6 +104,5 @@ class Menu:
             db_content.cur.execute(sql,(item_name,price,quantity))
         except psycopg2.Error as err:
             return jsonify({'error':str(err)})        
-        return jsonify({'message':'Item is added'}),201
-    
+        return jsonify({'message':'Item is added'}),201    
     

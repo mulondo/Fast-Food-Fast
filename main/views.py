@@ -54,7 +54,7 @@ def login():
         if user[0]==username and check_password_hash(user[1],password): 
             details= {'user_role':user[2],'user_id':user[3]}       
             access_token=create_access_token(identity=details)            
-            return jsonify({'access_token':access_token}),201
+            return jsonify({'access_token':access_token,'id':user[3]}),201
     return jsonify({'error':'user is not known'}), 404
 
 @myapp.route('/api/v2/users/orders', methods=['POST'])
