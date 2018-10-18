@@ -16,7 +16,7 @@ function onclick_signup(){
     .then((response)=>{
         var msg=(response);
         if (msg.message=="succussfully registered"){
-            alert("you have succussfully created an account");
+            alert("you have succussfully created an account"z);
             window.location.href="customer.html";
         }
         else{

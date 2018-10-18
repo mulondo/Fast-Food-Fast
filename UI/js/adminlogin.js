@@ -19,7 +19,7 @@ function on_click_login() {
         else{
             alert("succussfully logged in !");
             localStorage.setItem("access_token",response.access_token);
-            window.location.href="./UI/customer.html"; 
+            window.location.href="./customer.html"; 
         }
             
     })
