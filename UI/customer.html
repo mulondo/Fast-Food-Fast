@@ -80,8 +80,8 @@
                             <form>
                                 <h2>Dinner menu</h2>
                                 <input type="checkbox"> Hotdog =2500shs<br>
-                                    <input type="checkbox"> chips =2000shs<br>
-                                    <input type="checkbox"> Chicken =3000shs<br>
+                                    <input value="chips" id="chi" type="checkbox"> chips =2000shs<br>
+                                    <input value="Chicken" type="checkbox"> Chicken =3000shs<br>
                                     <input type="checkbox"> Yogurt =2000shs<br>
                                     <input type="checkbox"> Eggs =500 @shs<br>
                                     <input type="checkbox"> Cake =1000shs<br>
@@ -94,7 +94,7 @@
                                             <option value="cash">Cash</option>
                                             <option value="mobile">Mobile money</option>
                                         </select>                         
-                                    <input class="btn_extend" type="submit" value="Order">
+                                    <input class="btn_extend" type="button" id="dinner_order"value="Order">
                                     <input class="btn_extend" id="dinnercancel" type="button" value="Cancel">                                
                             </form>
                             
@@ -104,47 +104,8 @@
             </section> 
             
             
-            
+            <script src="js/makeorder.js"></script>
     </div>
-    <script>
-    // pick modals
-    var breakfastmodal = document.getElementById('breakfastmodal');
-    var lunchmodal= document.getElementById('lunchmodal');
-    var dinnermodal= document.getElementById('dinnermodal');
     
-
-    // pick buttons
-    var breakfast_btn = document.getElementById("breakfast_btns");
-    var lunch_btn=document.getElementById("lunch_btn_id");
-    var dinner_btn=document.getElementById("dinner_btn_id");
-    var lunchcancel_btn=document.getElementById("lunchcancel");
-    var breakcancel_btn=document.getElementById("breakcancel");
-    var dinnercancel_btn=document.getElementById("dinnercancel");
-   
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // open modals when buttons are clicked  
-    breakfast_btn.onclick = function() {
-        breakfastmodal.style.display = "block";
-    }
-    breakcancel_btn.onclick = function() {
-        breakfastmodal.style.display = "none";
-    }
-    lunch_btn.onclick =function() {
-        lunchmodal.style.display = "block";
-    }
-    lunchcancel.onclick =function() {
-        lunchmodal.style.display = "none";
-    }
-    dinner_btn.onclick =function() {
-        dinnermodal.style.display = "block";
-    }
-    dinnercancel_btn.onclick =function() {
-        dinnermodal.style.display = "none";
-    }
-
-    
-</script>
     </body>
 </html>
