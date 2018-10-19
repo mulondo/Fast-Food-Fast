@@ -115,9 +115,10 @@ def add_menu_items():
         price=request.json['price']
         item=request.json['item']
         quantity=request.json['quantity']
+        category=request.json['category']
     except KeyError:
         return jsonify({'message':'some fields are missing'}),400
-    return menu_items.add_menu_items(item,price,quantity)
+    return menu_items.add_menu_items(item,price,category,quantity)
 
 @myapp.route('/api/v2/make_admin/<int:user_id>',methods=['PUT'])
 def create_admin(user_id):

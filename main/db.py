@@ -27,19 +27,20 @@ class Database:
         menu_items="""create table if not exists Items(items_id serial PRIMARY KEY NOT NULL,
                                                         item_name TEXT NOT NULL,
                                                         price INTEGER NOT NULL,
+                                                        category TEXT NOT NULL,
                                                         quantity TEXT NOT NULL                                                       
                                                         )"""
-        Database.cur.execute(user_table)
-        Database.cur.execute(order_table)
+        # Database.cur.execute(user_table)
+        # Database.cur.execute(order_table)
         Database.cur.execute(menu_items)    
 
     def drop_tables(self):
         """
         method drops tables
         """
-        drop_tables = "DROP TABLE Users,Orders"
+        # drop_tables = "DROP TABLE Users,Orders"
         drop_menu="DROP TABLE Items cascade"
-        Database.cur.execute(drop_tables)
+        # Database.cur.execute(drop_tables)
         Database.cur.execute(drop_menu)
         
 create=Database()

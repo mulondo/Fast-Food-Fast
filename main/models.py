@@ -95,13 +95,13 @@ class Menu:
         data=db_content.dict_cursor.fetchall()
         return jsonify({'results':data}),200
 
-    def add_menu_items(self,item_name,price,quantity):
+    def add_menu_items(self,item_name,price,category,quantity):
         if not type(item_name) ==str or item_name.strip() == "" or not type(price)==int or price.strip()=="" or not type(quantity) ==str or quantity.strip() == "":
             return jsonify({'error':'wrong items format'}),400
             return jsonify({'error':'wrong items format'}),400
         try:
-            sql="INSERT INTO Items(item_name,price,quantity) VALUES(%s,%s,%s)"
-            db_content.cur.execute(sql,(item_name,price,quantity))
+            sql="INSERT INTO Items(item_name,price,category,quantity) VALUES(%s,%s,%s,%s)"
+            db_content.cur.execute(sql,(item_name,price,category,quantity))
         except psycopg2.Error as err:
             return jsonify({'error':str(err)})        
         return jsonify({'message':'Item is added'}),201    
