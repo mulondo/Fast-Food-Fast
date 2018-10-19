@@ -6,7 +6,7 @@ function onclick_signup(){
     phone_number:document.getElementById('phno').value
     };
     // const url ='http://127.0.0.1:5000/api/v2/auth/signup';
-    fetch('https://fast-food-fa.herokuapp.com/api/v2/auth/signup',{
+    fetch('https://real-fast-food-fast.herokuapp.com/api/v2/auth/signup',{
     method: 'POST',
     body: JSON.stringify(data),
     headers:{
@@ -16,7 +16,7 @@ function onclick_signup(){
     .then((response)=>{
         var msg=(response);
         if (msg.message=="succussfully registered"){
-            alert("you have succussfully created an account"z);
+            alert("you have succussfully created an account");
             window.location.href="customer.html";
         }
         else{

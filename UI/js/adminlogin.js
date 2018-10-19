@@ -4,7 +4,7 @@ function on_click_login() {
     username:document.getElementById('usrnm').value,
     password:document.getElementById('pwd').value,
     };
-    url='https://fast-food-fa.herokuapp.com/api/v2/auth/login';
+    url='https://real-fast-food-fast.herokuapp.com/api/v2/auth/login';
     fetch(url,{
         method: 'POST',
         body: JSON.stringify(data),

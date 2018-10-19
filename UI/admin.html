@@ -14,13 +14,24 @@
             </div>
 
             <input type="button" class="operations" onclick="document.getElementById('add').style.display='block'" value="Food items">
-             <!-- <img src="images/food.jpg" alt="food" style="width:100%" class="food"> -->
+             
              <div id="add" class="modal"> 
-                    <table class="modal-content animate">
+                <div class="modal-content animate">
+                    <h1 id="orders">List Items</h1>
+                    <form>
+                            <input type="text" placeholder="Item name" id="item">
+                            <input type="text" placeholder="Quantity" id="quantity">
+                            <input type="text" placeholder="Category" id="category">
+                            <input type="text" placeholder="Price" id="price">
+                            <input type="button" value="add" id="add_btn">
+                    </form>
+                    <table >
                             <tr>
-                              <th>Breakfast</th>
-                              <th>Lunch</th>
-                              <th>Dinner</th>
+                              <th>Item Id</th>
+                              <th>Item</th>
+                              <th>Category</th>
+                              <th>Quantity</th>
+                              <th>Price</th>
                             </tr>
                             <tr>
                               <td>milk</td>
@@ -38,26 +49,27 @@
                               <td><button>Delete</button></td>
                             </tr>
                             <tr>
+                                <td>black tea</td>
+                                <td>beef</td>
+                                <td>hotdog</td>
+                                <td><button>Edit</button></td>
+                                <td><button>Delete</button></td>
+                            </tr>
+                            <tr>
+                                <td>black tea</td>
+                                <td>beef</td>
+                                <td>hotdog</td>
+                                <td><button>Edit</button></td>
+                                <td><button>Delete</button></td>
+                            </tr>
+                            <tr>
                               <td>chapati</td>
                               <td>chicken</td>
                               <td>eggs</td>
                               <td><button>Edit</button></td>
                               <td><button>Delete</button></td>
                             </tr>
-                            <tr>
-                              <td>porride</td>
-                              <td>rice</td>
-                              <td>yogurt</td>
-                              <td><button>Edit</button></td>
-                              <td><button>Delete</button></td>
-                            </tr>
-                            <tr>
-                              <td>pancakes</td>
-                              <td>fish</td>
-                              <td>sausage</td>
-                              <td><button>Edit</button></td>
-                              <td><button>Delete</button></td>
-                            </tr>
+                            
                             <tr>
                               <td>sausage</td>
                               <td>chips</td>
@@ -72,7 +84,8 @@
                                 <td><button>Add</button></td>
                                 <td><button type="button" onclick="document.getElementById('add').style.display='none'" class="cancelbtn">Close</button></td>                                                
                             </tr>                                        
-                          </table>            
+                          </table>  
+             </div>          
             </div>
 
             <div="ssection">
@@ -118,27 +131,10 @@
                         <td>pens</td>
                         <td>bags</td>
                     </tr>
-                </table>                
+                </table>
+                <input type="button" value="get items" id="get_items">             
             </div>
         </div>
-        <script>
-              function onclick_order_items() {
-            document.getElementById("order_items_dropdown").classList.toggle("show");
-                    } 
-                function onclick_order_items2() {
-            document.getElementById("order_items_dropdowns").classList.toggle("show");
-                    }
-        window.onscroll = function() {myFunction()};
-
-        var header = document.getElementById("myHeader");
-        var sticky = header.offsetTop;
-        var add_modal = document.getElementById('add');    
-        window.onclick = function(event) {
-            if (event.target == add_modal) {
-                modal.style.display = "none";
-            }
-        }
-       
-        </script>
+        <script src="js/adminwork.js"></script>
     </body>
 </html>
