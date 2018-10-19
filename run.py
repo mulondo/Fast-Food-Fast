@@ -5,6 +5,7 @@ from main import views
 
 
 db=Database()
+db.drop_tables()
 if __name__==('__main__'):
     myapp.run(debug=True, port=5000)
-    db.create_tables()
+    

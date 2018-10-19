@@ -30,16 +30,16 @@ class Database:
                                                         category TEXT NOT NULL,
                                                         quantity TEXT NOT NULL                                                       
                                                         )"""
-        Database.cur.execute(user_table)
-        Database.cur.execute(order_table)
+        # Database.cur.execute(user_table)
+        # Database.cur.execute(order_table)
         Database.cur.execute(menu_items)    
 
     def drop_tables(self):
         """
         method drops tables
         """
-        drop_tables = "DROP TABLE Users,Orders"
+        # drop_tables = "DROP TABLE Users,Orders"
         drop_menu="DROP TABLE Items cascade"
-        Database.cur.execute(drop_tables)
+        # Database.cur.execute(drop_tables)
         Database.cur.execute(drop_menu)
         
