@@ -38,169 +38,95 @@ body {font-family: Arial, Helvetica, sans-serif;}
      color: rgb(212, 159, 102)
  }
  
-aside{
+#asside{
     height:500px;
     background-color: #ccc;
     float: left;
-    width: 23%;
+    width: 18%;
     margin-top: 10px;
 }
-
-.column {
-    width: 100%
-    padding 10px
-  }
-
-
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 16px;
-    width: 900px;
-    height: auto;
-    background-color: #f1f1f1;
-  }
-
-.card #order_items{
-    color:#0B4C5F;
-    cursor: pointer;
-    margin-top: -12px;
+#ssection{
+    width:81%;
+    overflow: scroll;
 }
-.card #order_items:hover{
-    color: #B45F04;
+#orders{
+    text-align: center;
+    color: #61210B;
 }
 
 
-.card #itemsnumber{
-    color:chocolate;
-    margin-top: -38px;
-    margin-left: 99px
+    
+textarea{
+    width: 98%;
+    height: 100px
 }
-.customer_info{
-    margin-top: -12px;
-}
-#order_type{
-    margin-top: -10px;
-}
-#items{
-    margin-top: -10px;
-}
-#order{
-    margin-top: -10px;
+    
+.show {display: block;}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
 }
 
-.row{
-    margin: 0;
-    float: left;
-    height: auto;
-    padding: 10px
-    }
-
-.items_dropdown {
-    position: relative;
+        
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    height: 250px;
+    padding:10px 5px 0 5px;
+}
+#food-item{
+    width: 98%;
+    margin: 8px 0;
     display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    height: 30px;
 }
-    
-.items_dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    min-width: 230px;
-    border: 1px solid #ddd;
-    z-index: 1;
-    height: 150px;
-    width:900px;
-    overflow: scroll
+input[type=checkbox]{
+    /* margin-top: 40px;  */
+    margin-left: 80px;         
+}
+#separate_item{
+    margin-top: 40px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width:100%;
+    overflow: scroll;
     }
-    
-    #items_number{
-    margin-top: -45px;
-    margin-left: 85px;
-    color:chocolate
-    }
-    
-    textarea{
-        width: 98%;
-        height: 100px
-    }
-    .items_card {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        padding: 16px;
-        width: 830px;
-        height: auto;
-        background-color: #f1f1f1;
-      }
-    
-      .order_item_row{
-        margin: 0;
-        float: left;
-        height: auto;
-        padding: 10px
-        }
-        .show {display: block;}
 
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-            padding-top: 60px;
-        }
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
 
-        
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-            border: 1px solid #888;
-            width: 40%; /* Could be more or less, depending on screen size */
-            height: 250px;
-            padding:10px 5px 0 5px;
-        }
-        #food-item{
-            width: 98%;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-            height: 30px;
-        }
-        input[type=checkbox]{
-            /* margin-top: 40px;  */
-            margin-left: 80px;         
-        }
-        #separate_item{
-            margin-top: 40px;
-        }
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
 
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-        
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-        
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
 
-        .animate {
-            -webkit-animation: animatezoom 0.6s;
-            animation: animatezoom 0.6s
-        }
-
-        #complete{
-            margin-top: -20px;
-        }
+#complete{
+    margin-top: -20px;
+}
 
 @media screen and (max-width:800px) {
     /** for tablets */
@@ -208,8 +134,15 @@ aside{
         background-color:burlywood;
     }
     nav{
-        width: 90%;
+        width: 100%;
         margin-right:10px;
+    }
+    #ssection{
+        width:81%;
+        overflow: scroll;
+    }
+    table{
+        width: 50%;
     }
     
 }
@@ -221,7 +154,7 @@ aside{
         background-color: rgb(192, 212, 192);
     }
     nav{
-        width: 90%;
+        width: 100%;
         margin-right:0;
     }
     .navbar a {

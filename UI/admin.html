@@ -4,164 +4,122 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Fast-Food-Fast</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./css/admin.css" />
+        <link rel="stylesheet" href="./css/admin.css"/>
     </head>
     <body>
         <div class="contain">
             <div class="navbar">
-                <h3 id="title">Events App</h3> 
-                <a href="../index.html"><h3 id="logout">Logout</h3></a>   
+                <h3 id="title">Fast-Food-Fast App</h3> 
+                <a href="./adminlogin.html"><h3 id="logout">Logout</h3></a>   
             </div>
 
-            <aside>
-                    <img src="images/food.jpg" alt="food" style="width:100%" class="food">
-                        <h2 class="operations" onclick="document.getElementById('add').style.display='block'" style="width:auto;">Food items</h2>
-                       
+            <input type="button" class="operations" onclick="document.getElementById('add').style.display='block'" value="Food items">
+             <!-- <img src="images/food.jpg" alt="food" style="width:100%" class="food"> -->
+             <div id="add" class="modal"> 
+                    <table class="modal-content animate">
+                            <tr>
+                              <th>Breakfast</th>
+                              <th>Lunch</th>
+                              <th>Dinner</th>
+                            </tr>
+                            <tr>
+                              <td>milk</td>
+                              <td>matooke</td>
+                              <td>cassava</td>
+                              <td><button>Edit</button></td>
+                              <td><button>Delete</button></td>
+                              
+                            </tr>
+                            <tr>
+                              <td>black tea</td>
+                              <td>beef</td>
+                              <td>hotdog</td>
+                              <td><button>Edit</button></td>
+                              <td><button>Delete</button></td>
+                            </tr>
+                            <tr>
+                              <td>chapati</td>
+                              <td>chicken</td>
+                              <td>eggs</td>
+                              <td><button>Edit</button></td>
+                              <td><button>Delete</button></td>
+                            </tr>
+                            <tr>
+                              <td>porride</td>
+                              <td>rice</td>
+                              <td>yogurt</td>
+                              <td><button>Edit</button></td>
+                              <td><button>Delete</button></td>
+                            </tr>
+                            <tr>
+                              <td>pancakes</td>
+                              <td>fish</td>
+                              <td>sausage</td>
+                              <td><button>Edit</button></td>
+                              <td><button>Delete</button></td>
+                            </tr>
+                            <tr>
+                              <td>sausage</td>
+                              <td>chips</td>
+                              <td>eggs</td>
+                              <td><button>Edit</button></td>
+                              <td><button>Delete</button></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button>Add</button></td>
+                                <td><button type="button" onclick="document.getElementById('add').style.display='none'" class="cancelbtn">Close</button></td>                                                
+                            </tr>                                        
+                          </table>            
+            </div>
 
-                        <div id="add" class="modal"> 
-                                <table class="modal-content animate">
-                                        <tr>
-                                          <th>Breakfast</th>
-                                          <th>Lunch</th>
-                                          <th>Dinner</th>
-                                        </tr>
-                                        <tr>
-                                          <td>milk</td>
-                                          <td>matooke</td>
-                                          <td>cassava</td>
-                                          <td><button>Edit</button></td>
-                                          <td><button>Delete</button></td>
-                                          
-                                        </tr>
-                                        <tr>
-                                          <td>black tea</td>
-                                          <td>beef</td>
-                                          <td>hotdog</td>
-                                          <td><button>Edit</button></td>
-                                          <td><button>Delete</button></td>
-                                        </tr>
-                                        <tr>
-                                          <td>chapati</td>
-                                          <td>chicken</td>
-                                          <td>eggs</td>
-                                          <td><button>Edit</button></td>
-                                          <td><button>Delete</button></td>
-                                        </tr>
-                                        <tr>
-                                          <td>porride</td>
-                                          <td>rice</td>
-                                          <td>yogurt</td>
-                                          <td><button>Edit</button></td>
-                                          <td><button>Delete</button></td>
-                                        </tr>
-                                        <tr>
-                                          <td>pancakes</td>
-                                          <td>fish</td>
-                                          <td>sausage</td>
-                                          <td><button>Edit</button></td>
-                                          <td><button>Delete</button></td>
-                                        </tr>
-                                        <tr>
-                                          <td>sausage</td>
-                                          <td>chips</td>
-                                          <td>eggs</td>
-                                          <td><button>Edit</button></td>
-                                          <td><button>Delete</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><button>Add</button></td>
-                                            <td><button type="button" onclick="document.getElementById('add').style.display='none'" class="cancelbtn">Close</button></td>                                                
-                                        </tr>                                        
-                                      </table>                                    
-                                                                    
-                            
-                        </div>         
-                        
-
-                        
-                                        
-
-            </aside>
-
-            <section>
-                <div class="column">
-                    <div class="row">
-                        <div class="card">
-                            <h3 name="">Order 1</h3>
-
-                            <h5 class="customer_info">From: Moses</h5> 
-                            <h5 class="customer_info">Phone number: 0703893645</h5>
-                            <h5 class="customer_info">Date: 09/08/2018  Time: 09:00am</h5>
-                            <h5 class="customer_info">Location: Seeta</h5>
-                                                                                                                               
-                                    <div class="items_dropdown">
-                                        <h4 onclick="onclick_order_items()" id="order_items">order items</h4> 
-                                        <h4 id="itemsnumber">5</h4> 
-                                                                               
-                                          <div id="order_items_dropdown" class="items_dropdown-content">                              
-                                                    <div class="order_item_row">
-                                                            <div class="items_card">
-                                                                <h4 id="order_type">Lunch</h4>
-                                                                <ul id="items">
-                                                                    <li>rice</li>
-                                                                    <li>matooke</li>
-                                                                    <li>cassave</li>
-                                                                    <li>bean</li>
-                                                                    <li>sweat potato</li>
-                                                                </ul>                                                               
-                                                                                                                          
-                                                                <form>                                                                     
-                                                                    <input type="submit" value="Complete">                                                                  
-                                                                    <input type="submit" value="Decline order">                                                                    
-                                                                    <input type="submit" value="Accept order">
-                                                                </form>                                                                                                               
-                                                            </div>
-                                                    </div>                                                         
-                                          </div>
-                                    </div>                                                                                     
-                        </div>
-                    </div>                     
-                    
-        
-                            <div class="row">
-                        <div class="card">
-                            <h3 id="order">Order 2</h3>
-                                                        
-                            <h5 class="customer_info">From: John</h5> 
-                            <h5 class="customer_info">Phone number: 070389525</h5>
-                            <h5 class="customer_info">Date: 09/08/2018  Time: 09:00am</h5>
-                            <h5 class="customer_info">Location: Kampala</h5>
-                                                                                                                               
-                                    <div class="items_dropdown">
-                                        <h4 onclick="onclick_order_items2()" id="order_items">order items</h4> 
-                                        <h4 id="itemsnumber">2</h4> 
-                                                                               
-                                          <div id="order_items_dropdowns" class="items_dropdown-content">                              
-                                                    <div class="order_item_row">
-                                                            <div class="items_card">  
-                                                                <h3 id="order_type">Breakfast</h3>                                                             
-                                                                <ul id="items">                                                                        
-                                                                    <li>milk</li>
-                                                                    <li>chapati</li>                                                                    
-                                                                </ul>  
-                                                                                                                            
-                                                                <form>                                                                  
-                                                                        <input type="submit" value="Complete">                                                                                                              
-                                                                        <input type="submit" value="Decline order">                                                                        
-                                                                        <input type="submit" value="Accept order">
-                                                                       
-                                                                    </form>                                                                                                                   
-                                                            </div>
-                                                    </div>                                                         
-                                        </div>
-                                </div>                                                                                     
-                        </div>
-                    </div>                                
-                </div>
-            </section>
+            <div="ssection">
+                <h1 id="orders">Customer orders</h1>
+                <table>
+                    <tr>
+                        <th>OrderId</th>
+                        <th>Date</th>
+                        <th>Customer name</th>
+                        <th>Phone number</th>           
+                        <th>Payment mode</th>
+                        <th>Order Items</th>
+                        <th>Status</th>
+                        <th>Register</th>                       
+                    </tr>
+                    <tr>
+                        <td>money</td>
+                        <td>books</td>
+                        <td>pens</td>
+                        <td>bags</td>
+                        <td>money</td>
+                        <td>books</td>
+                        <td>pens</td>
+                        <td>bags</td>
+                    </tr>
+                    <tr>
+                        <td>money</td>
+                        <td>books</td>
+                        <td>pens</td>
+                        <td>bags</td>
+                        <td>money</td>
+                        <td>books</td>
+                        <td>pens</td>
+                        <td>bags</td>
+                    </tr>
+                    <tr>
+                        <td>money</td>
+                        <td>books</td>
+                        <td>pens</td>
+                        <td>bags</td>
+                        <td>money</td>
+                        <td>books</td>
+                        <td>pens</td>
+                        <td>bags</td>
+                    </tr>
+                </table>                
+            </div>
         </div>
         <script>
               function onclick_order_items() {

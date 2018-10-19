@@ -16,10 +16,13 @@ function on_click_login() {
         if(response.error=="user is not known"){
             alert("Please enter the right username or password");
         }
+        else if (response.user_role!="admin") {
+           alert("for admin only"); 
+        } 
         else{
             alert("succussfully logged in !");
             localStorage.setItem("access_token",response.access_token);
-            window.location.href="./customer.html"; 
+            window.location.href="./admin.html"; 
         }
             
     })
