@@ -2,7 +2,7 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 class Database:
 #connect to database
-    con=psycopg2.connect(host="ec2-184-73-197-211.compute-1.amazonaws.com", database="aac276d05879653ee9edbe8f3f73c8a24959caf1206337389929f452fca5b48b",port="5432")
+    con=psycopg2.connect(host="ec2-184-73-197-211.compute-1.amazonaws.com", database="df11mo103pjvn4",user="bunyqndezyzqxm",password="aac276d05879653ee9edbe8f3f73c8a24959caf1206337389929f452fca5b48b",port="5432")
     
     dict_cursor=con.cursor(cursor_factory=RealDictCursor)
     cur=con.cursor()
