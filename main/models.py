@@ -100,7 +100,7 @@ class Menu:
             return jsonify({'error':'wrong items format'}),400
             return jsonify({'error':'wrong items format'}),400
         try:
-            sql="INSERT INTO Items(item_name,price,category,quantity) VALUES(%s,%s,%s,%s)"
+            sql="INSERT INTO items(item_name,price,category,quantity) VALUES(%s,%s,%s,%s)"
             db_content.cur.execute(sql,(item_name,price,category,quantity))
         except psycopg2.Error as err:
             return jsonify({'error':str(err)})        
