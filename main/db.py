@@ -42,4 +42,6 @@ class Database:
         drop_menu="DROP TABLE Items cascade"
         Database.cur.execute(drop_tables)
         Database.cur.execute(drop_menu)
+
+
         
