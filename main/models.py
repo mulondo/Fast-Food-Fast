@@ -96,7 +96,7 @@ class Menu:
         return jsonify({'results':data}),200
 
     def add_menu_items(self,item_name,price,category,quantity):
-        if not type(item_name) ==str or item_name.strip() == "" or not type(price)==int or price.strip()=="" or not type(quantity) ==str or quantity.strip() == "":
+        if not type(item_name) ==str or item_name.strip() == "" or not type(price)==int or price=="" or not type(quantity) ==str or quantity.strip() == "":
             return jsonify({'error':'wrong items format'}),400
             return jsonify({'error':'wrong items format'}),400
         try:
