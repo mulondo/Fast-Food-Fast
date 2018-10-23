@@ -93,7 +93,7 @@ class Menu:
     def get_menu_items(self):
         db_content.dict_cursor.execute("SELECT * FROM Items")
         data=db_content.dict_cursor.fetchall()
-        return jsonify({'results':data}),200
+        return data
 
     def add_menu_items(self,item_name,price,category,quantity):
         if not type(item_name) ==str or item_name.strip() == "" or not type(price)==int or price=="" or not type(quantity) ==str or quantity.strip() == "":

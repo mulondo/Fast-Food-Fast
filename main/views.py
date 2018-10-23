@@ -106,8 +106,8 @@ def update_order_status(orderId):
 @myapp.route('/api/v2/menu', methods=['GET'])
 @jwt_required
 def get_menu_items():
-    return menu_items.get_menu_items()
-
+    return jsonify({'results':menu_items.get_menu_items()}),200
+    
 @myapp.route('/api/v2/menu', methods=['POST'])
 @admain_only
 def add_menu_items():
