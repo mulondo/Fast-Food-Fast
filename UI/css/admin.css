@@ -77,6 +77,10 @@ textarea{
     padding-top: 60px;
 }
 
+.cancelbtn{
+    float: right;
+}
+
         
 .modal-content {
     background-color: #fefefe;
