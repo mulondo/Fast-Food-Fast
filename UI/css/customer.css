@@ -69,7 +69,22 @@ body {font-family: Arial, Helvetica, sans-serif;
     margin-left: 40%;
     color: #FFFFFF;    
 }
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width:100%;
+    overflow: scroll;
+    }
 
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
  
  #logout{
      font-size: 20px;
@@ -113,7 +128,10 @@ body {font-family: Arial, Helvetica, sans-serif;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 40%;
+    width: 80%; /* Could be more or less, depending on screen size */
+    height: auto;
+    padding:10px 5px 0 5px;
+    overflow: scroll;
 }
 
 /* The Close Button */
