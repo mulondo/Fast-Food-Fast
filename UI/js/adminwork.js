@@ -15,9 +15,43 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-var add_btn=document.getElementById("add_btn");
-add_btn.onclick=function(){
-    // alert(localStorage.getItem("access_token"));    
+
+var food_items=document.getElementById("food_items");
+food_items.onclick=function(){
+    document.getElementById('add').style.display='block';
+    var table=document.getElementById("list_items");
+   
+    fetch('https://real-fast-food-fast.herokuapp.com/api/v2/menu',{
+        method: 'GET',
+        headers:{
+            'Content-Type':'application/json',
+            'Authorization': `Bearer ${localStorage.getItem("access_token")}`,
+			'Access-Control-Allow-Origin': '*'
+        }
+    }).then(res=>res.json())
+    .then(response=>{
+        data=response.results;
+        var i;
+        for (i=0;i<data.length;i++){
+            var newrow=table.insertRow(1);
+            var item=newrow.insertCell(0);
+            var category=newrow.insertCell(1);
+            var quantity=newrow.insertCell(2);
+            var price=newrow.insertCell(3);            
+            item.innerHTML=data[i].item_name;
+            category.innerHTML= data[i].category;
+            price.innerHTML=data[i].price;
+            quantity.innerHTML=data[i].quantity;
+
+        //     // alert(JSON.stringify( data[i].category));
+        }
+      
+    })
+    .catch(error=>alert("errors"));
+}
+
+// var add_btn=document.getElementByn("add_btn");
+add_btn.onclick=function(){    
     items_data={
         price:parseInt(document.getElementById("price").value),
         item:document.getElementById("item").value,
@@ -25,7 +59,6 @@ add_btn.onclick=function(){
         category:document.getElementById("category").value
     }
     var token = localStorage.getItem("access_token");
-    var data = JSON.stringify(items_data)
     // alert(data)
     fetch('https://real-fast-food-fast.herokuapp.com/api/v2/menu',{
         method: 'POST',
@@ -37,7 +70,9 @@ add_btn.onclick=function(){
         }
         
     }).then(res=>res.json())
-    .catch(error=>alert("errors"));
+    .catch(error=>console.log("Error"));
+
+    location.reload();
 }
 
 
@@ -72,35 +107,8 @@ get_items_btn.onclick=function(){
     // })
     // .catch(error=>alert("errors"));
 
-}
-
-var fetch_items=document.getElementById("fetch_items");
-fetch_items.onclick=function(){
-    // var table=document.getElementById("list_items");
-    // var newrow=table.insertRow(1);
-    // var itemid=newrow.insertCell(0);
-    // var item=newrow.insertCell(1);
-    // var category=newrow.insertCell(2);
-    // var price=newrow.insertCell(3);
-    // var quantity=newrow.insertCell(4);
-     fetch('https://real-fast-food-fast.herokuapp.com/api/v2/menu',{
-        method: 'GET',
-        headers:{
-            'Content-Type':'application/json',
-            'Authorization': `Bearer ${localStorage.getItem("access_token")}`,
-			'Access-Control-Allow-Origin': '*'
-        }
-    }).then(res=>{
-        data=res.results;
-        console.log(data);
-        
-            // itemid.innerHTML=items.items_id;
-            // item.innerHTML=items.item_name;
-            // category.innerHTML=items.category;
-            // price.innerHTML=items.price;
-            // quantity.innerHTML=items.quantity;
-      
-    })
-    .catch(error=>alert("errors"));
-    
 }		
+var close=document.getElementById("close");
+close.onclick=function(){
+    document.getElementById('add').style.display='none';
+}
