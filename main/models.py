@@ -23,16 +23,17 @@ class Orders:
     def get_all_orders(self):
         db_content.dict_cursor.execute("SELECT orders.date,orders.payment_mode, orders.order_items,users.username,users.phone_number from orders INNER JOIN users ON orders.user_id=users.user_id ")
         data=db_content.dict_cursor.fetchall() 
-        return jsonify({'results':data})
+        return data
+        
     def get_history_orders(self,user_id):
         db_content.dict_cursor.execute("SELECT * from orders WHERE user_id='{}'".format(user_id))
         data=db_content.dict_cursor.fetchall()
-        return jsonify({'user_order':data}),200
+        return data
     
     def get_specific_order(self,orderid):
         db_content.dict_cursor.execute("SELECT * from orders WHERE order_id='{}'".format(orderid))
         data=db_content.dict_cursor.fetchall()
-        return jsonify({'user_order':data}),200
+        return data
     
     def update_status(self,status,orderid):
         sql="UPDATE orders SET status='"+status+"' WHERE order_id='{}'".format(orderid)
@@ -103,6 +104,6 @@ class Menu:
             sql="INSERT INTO items(item_name,price,category,quantity) VALUES(%s,%s,%s,%s)"
             db_content.cur.execute(sql,(item_name,price,category,quantity))
         except psycopg2.Error as err:
-            return jsonify({'error':str(err)})        
+            return jsonify({'error':str(err)})      
         return jsonify({'message':'Item is added'}),201    
     

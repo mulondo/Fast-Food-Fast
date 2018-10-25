@@ -80,18 +80,18 @@ def get_history_order():
     """ gets a specific order given an id""" 
     user_identity=get_jwt_identity()  
     user_id=user_identity['user_id']
-    return food_orders.get_history_orders(user_id)
+    return jsonify({'user_order':food_orders.get_history_orders(user_id)}),200
 
 @myapp.route('/api/v2/orders', methods=['GET'])
 @admain_only
 def get_order():
     """Gets all orders"""
-    return food_orders.get_all_orders()
+    return jsonify({'results':food_orders.get_all_orders()}),200
 
 @myapp.route('/api/v2/orders/<int:orderId>', methods=['GET'])
 @admain_only
 def get_an_order(orderId):   
-    return food_orders.get_specific_order(orderId)
+    return jsonify({'user_order':food_orders.get_specific_order(orderId)}),200
 
 @myapp.route('/api/v2/orders/<int:orderId>',methods=['PUT'])
 @admain_only
