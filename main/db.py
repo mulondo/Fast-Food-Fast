@@ -22,7 +22,7 @@ class Database:
                                                         payment_mode TEXT,
                                                         location TEXT,
                                                         status TEXT DEFAULT 'pending',
-                                                        order_items json NOT NULL
+                                                        order_items TEXT NOT NULL
                                                         )"""
         menu_items="""create table if not exists Items(items_id serial PRIMARY KEY NOT NULL,
                                                         item_name TEXT NOT NULL,

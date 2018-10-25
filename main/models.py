@@ -8,11 +8,8 @@ from main.db import Database
 db_content=Database()
 
 class Orders:
-    def make_order(self, customer_id, order_date, payment, current_location, my_items=list()):
+    def make_order(self, customer_id, order_date, payment, current_location, order_items):
         """ performs the logic for addding an order to a list"""
-        if len(my_items)==0:
-            return jsonify({'message':'please pass in the menu items!'}),400
-        order_items = my_items
         try:
             sql="INSERT INTO orders(user_id,date,payment_mode,order_items,location) VALUES(%s,%s,%s,%s,%s)"
             db_content.cur.execute(sql,(customer_id, order_date, payment, json.dumps(order_items),current_location))

@@ -67,8 +67,7 @@ def place_order():
         order_date=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         current_location = request.json['location']
         payment=request.json['payment_mode']
-        my_items = []
-        my_items.append(request.json['order_items'])
+        my_items = request.json['order_items']
     except KeyError:
         return jsonify({'message':'some fields are missing'}),400
 
