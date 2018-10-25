@@ -21,27 +21,28 @@
 
                 <div id="breakfastmodal" class="modal">
                    
-                    <div class="modal-content">                      
-                        <form>
-                            <h2>Breakfast menu</h2>
-                                <input type="checkbox"> Milk tea =1500shs<br>
-                                <input type="checkbox"> Black tea =1000shs <br>
-                                <input type="checkbox">Chapati =1000shs<br>
-                                <input type="checkbox"> Porride =2000shs<br>
-                                <input type="checkbox"> Pancakes =500shs<br>
-                                <input type="checkbox"> Sausage =1000shs<br>
-                                <input type="checkbox"> Bread =1000shs<br>
-                                <input type="checkbox"> Hotdog =2500shs<br>
-                                <input type="checkbox"> Eggs =500 @shs<br>
-                                <label for="Location"><b>Location</b></label>
-                                <input type="text"  placeholder="Enter location" required>
-                                <select>
-                                        <option value="cash">Cash</option>
-                                        <option value="mobile">Mobile money</option>
-                                    </select>                            
-                                <input class="btn_extend" type="submit" value="Order">
-                                <input class="btn_extend" type="button" id="breakcancel" value="Cancel">                                
-                        </form>
+                    <div class="modal-content"> 
+                            <input class="btn_extend" type="button" id="breakcancel" value="Cancel">               
+                            <table id="breakfast">
+                                <tr>                             
+                                <th>Item</th>                                    
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Select</th>
+                                </tr>                                       
+                                </table>
+
+                                <select id="selected">                                    
+                                </select>
+
+                                <select id="payment">
+                                    <option value="cash">Cash</option>
+                                    <option value="mobile_money">Mobile money</option>
+                                </select>
+                                <input type="text" id="location" placeholder="location">
+
+                                <input type="button" id="submit_breakfast" value="make order">
+                        
                         
                     </div>                
                 </div>
