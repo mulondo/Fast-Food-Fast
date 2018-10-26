@@ -1,6 +1,6 @@
 var histo=document.getElementById("history_link");
 histo.onclick=function(){
-    // window.location.href="history.html"
+    window.location.href="history.html"
     fetch('https://real-fast-food-fast.herokuapp.com/api/v2/users/orders',{
         method: 'GET',
         headers:{
