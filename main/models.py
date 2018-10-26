@@ -18,7 +18,7 @@ class Orders:
         return jsonify({'message':'order succussfully made!'}),201
 
     def get_all_orders(self):
-        db_content.dict_cursor.execute("SELECT orders.date,orders.payment_mode, orders.order_items,users.username,users.phone_number from orders INNER JOIN users ON orders.user_id=users.user_id ")
+        db_content.dict_cursor.execute("SELECT orders.order_id, orders.status, orders.date, orders.payment_mode, orders.location,orders.order_items,users.username,users.phone_number from orders INNER JOIN users ON orders.user_id=users.user_id ")
         data=db_content.dict_cursor.fetchall() 
         return data
         
