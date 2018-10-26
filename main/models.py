@@ -12,7 +12,7 @@ class Orders:
         """ performs the logic for addding an order to a list"""
         try:
             sql="INSERT INTO orders(user_id,date,payment_mode,order_items,location) VALUES(%s,%s,%s,%s,%s)"
-            db_content.cur.execute(sql,(customer_id, order_date, payment, json.dumps(order_items),current_location))
+            db_content.cur.execute(sql,(customer_id, order_date, payment, order_items,current_location))
         except psycopg2.Error as err:
             return jsonify({'error':str(err)}),400       
         return jsonify({'message':'order succussfully made!'}),201
