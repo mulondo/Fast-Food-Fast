@@ -5,7 +5,6 @@ function onclick_signup(){
     password:document.getElementById('pwd').value,
     phone_number:document.getElementById('phno').value
     };
-    // const url ='http://127.0.0.1:5000/api/v2/auth/signup';
     fetch('https://real-fast-food-fast.herokuapp.com/api/v2/auth/signup',{
     method: 'POST',
     body: JSON.stringify(data),
@@ -18,10 +17,10 @@ function onclick_signup(){
         var msg=(response);
         if (msg.message=="succussfully registered"){
             alert("you have succussfully created an account");
-            window.location.href="customer.html";
+            window.location.href="../login.html";
         }
         else{
-            alert("please try again");
+            alert("wrong input format, please check your inputs and try again!");
         }
     })   
     .catch(error=>alert("errors"));
