@@ -48,6 +48,7 @@ lunch_btn.onclick =function() {
          payment_mode:document.getElementById("lpayment").value,        
          order_items:document.getElementById("lselected").value
      }
+     alert(document.getElementById("lselected").value);
      var token = localStorage.getItem("access_token");
      // alert(data)
      fetch('https://real-fast-food-fast.herokuapp.com/api/v2/users/orders',{
@@ -57,15 +58,15 @@ lunch_btn.onclick =function() {
              'Content-Type':'application/json',
              'Authorization': `Bearer ${localStorage.getItem("access_token")}`,
              'Access-Control-Allow-Origin': '*'
-         }
+        }
          
-     }).then(res=>res.json())
+    }).then(res=>res.json())
      .catch(error=>console.log("Error"));
      
      location.reload();
      
          alert("order made succussfully");
-     }
+    }
      
      lunchcancel_btn.onclick = function() {
         lunchmodal.style.display = "none";

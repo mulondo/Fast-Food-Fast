@@ -1,12 +1,9 @@
 // pick modals
 var breakfastmodal = document.getElementById('breakfastmodal');
 
-
-
 // pick buttons
 var breakfast_btn = document.getElementById("breakfast_btns");
 var breakcancel_btn=document.getElementById("breakcancel");
-var dinner_order_btn=document.getElementById("dinner_order");
 var make_order_btn=document.getElementById("submit_breakfast")
 
 // Get the <span> element that closes the modal
@@ -83,18 +80,3 @@ alert("order made succussfully");
 breakcancel_btn.onclick = function() {
     breakfastmodal.style.display = "none";
 }
-
-dinner_btn.onclick =function() {
-    dinnermodal.style.display = "block";
-}
-dinnercancel_btn.onclick =function() {
-    dinnermodal.style.display = "none";
-}
-dinner_order_btn.onclick=function(){
-    var food=doucment.getElementById("chi").value;
-    alert(food);
-}
-
-// function make_order(){
-//     var 
-// }
