@@ -106,7 +106,7 @@ get_items_btn.onclick=function(){
         
     // })
     // .catch(error=>alert("errors"));
-
+    row += '<tr><td>'+data[i].item_name+'</td><td>'+data[i].price+'</td><td>'+data[i].quantity+'</td><td><button onclick="getId()">order_id</button></td></tr>';
 }		
 var close=document.getElementById("close");
 close.onclick=function(){
