@@ -1,6 +1,7 @@
 """ api routes"""
 from flask import jsonify, request
 from functools import wraps
+from flask_cors import CORS
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_jwt_extended import (JWTManager,verify_jwt_in_request, jwt_required, create_access_token,get_jwt_identity, get_jwt_claims)
 from main.models import Orders,Authorization,Menu
@@ -22,7 +23,7 @@ def admain_only(fn):
         else:
             return fn(*args, **kwargs)
     return wrapper
-
+CORS(@myapp)
 @myapp.route('/', methods=['GET'])
 def home():
     return jsonify({'message':'you are good to go'}),400
