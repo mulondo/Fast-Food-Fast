@@ -23,7 +23,7 @@ def admain_only(fn):
         else:
             return fn(*args, **kwargs)
     return wrapper
-CORS(@myapp)
+CORS(myapp)
 @myapp.route('/', methods=['GET'])
 def home():
     return jsonify({'message':'you are good to go'}),400
